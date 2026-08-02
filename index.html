@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bourhan | Webdesign & Digitale Lösungen</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    /* Header & Nav */
+    header {
+      background-color: #1e293b;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #fbbf24;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fbbf24;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #f8fafc;
+    }
+
+    .hero h1 span {
+      color: #fbbf24;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+    }
+
+    .btn {
+      background-color: #fbbf24;
+      color: #0f172a;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      display: inline-block;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2);
+    }
+
+    /* Section Global */
+    section {
+      padding: 60px 10%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #fbbf24;
+      margin-bottom: 40px;
+    }
+
+    /* Portfolio Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #fbbf24;
+    }
+
+    .project-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-info {
+      padding: 20px;
+    }
+
+    .project-info h3 {
+      color: #f8fafc;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .project-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background-color: #1e293b;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      text-align: center;
+    }
+
+    .service-card h3 {
+      color: #fbbf24;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background-color: #0f172a;
+      color: white;
+      font-family: inherit;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Bourhan.dev</div>
+    <nav>
+      <a href="#projekte">Projekte</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Moderne Websites für <span>dein Business</span>.</h1>
+    <p>Ich helfe lokalen Unternehmen, Gastronomen & Dienstleistern dabei, im Internet Kunden zu gewinnen.</p>
+    <a href="#kontakt" class="btn">Jetzt Projekt anfragen</a>
+  </section>
+
+  <!-- Projekte (Dynamisch per JS Schleife geladen) -->
+  <section id="projekte">
+    <h2 class="section-title">Meine Arbeit</h2>
+    <div class="projects-grid" id="projects-container"></div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="leistungen">
+    <h2 class="section-title">Was ich biete</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>📱 Responsive Design</h3>
+        <p>Deine Website sieht auf Smartphones, Tablets und Laptops perfekt aus.</p>
+      </div>
+      <div class="service-card">
+        <h3>⚡ Schnelle Ladezeiten</h3>
+        <p>Optimierter Code, damit Kunden nicht warten müssen.</p>
+      </div>
+      <div class="service-card">
+        <h3>🎯 Kunden-Gewinnung</h3>
+        <p>Klares Design mit integrierten Kontakt- & Reservierungsformularen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt">
+    <h2 class="section-title">Lass uns sprechen!</h2>
+    <div class="contact-form">
+      <form action="javascript:alert('Vielen Dank! Ich melde mich in Kürze bei dir.');">
+        <input type="text" placeholder="Dein Name" required>
+        <input type="email" placeholder="Deine E-Mail" required>
+        <textarea rows="4" placeholder="Erzähle mir kurz von deinem Projekt..." required></textarea>
+        <button type="submit" class="btn">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Bourhan • Webdesign & Entwicklung</p>
+  </footer>
+
+  <!-- JS Schleife für Projekte -->
+  <script>
+    const meinedaten = [
+      {
+        titel: "Café Rheinblick Bonn",
+        beschreibung: "Landingpage für ein gemütliches Café am Rhein mit Tisch-Reservierung und digitaler Speisekarte.",
+        bild: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500",
+        link: "https://bourii4.github.io/cafe-landigpage/"
+      }
+    ];
+
+    const container = document.getElementById("projects-container");
+
+    meinedaten.forEach(projekt => {
+      container.innerHTML += `
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('${projekt.bild}');"></div>
+          <div class="project-info">
+            <h3>${projekt.titel}</h3>
+            <p>${projekt.beschreibung}</p>
+            <a href="${projekt.link}" target="_blank" class="project-link">Website ansehen ➔</a>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
