@@ -304,22 +304,20 @@
       Link: "https://bourii4.github.io/kickz-shop/"
     }
     ];
+const Behälter = document.getElementById("Projekt-Container");
 
-    const container = document.getElementById("projects-container");
-
-    meinedaten.forEach(projekt => {
-      container.innerHTML += `
-        <div class="project-card">
-          <div class="project-img" style="background-image: url('${projekt.bild}');"></div>
-          <div class="project-info">
-            <h3>${projekt.titel}</h3>
-            <p>${projekt.beschreibung}</p>
-            <a href="${projekt.link}" target="_blank" class="project-link">Website ansehen →</a>
-          </div>
-        </div>
-      `;
-    });
-  </script>
+meinedaten.forEach(Projekt => {
+  Behälter.innerHTML += `
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('${Projekt.Bild}');"></div>
+      <div class="project-info">
+        <h3>${Projekt.Titel}</h3>
+        <p>${Projekt.Beschreibung}</p>
+        <a href="${Projekt.Link}" target="_blank" class="project-link">Website ansehen →</a>
+      </div>
+    </div>
+  `;
+});
 
 </body>
 </html>
