@@ -337,56 +337,50 @@
         <p>Klares Design mit integrierten Kontakt- und Reservierungsformularen.</p>
       </div>
     </div>
-  </section>
+  <!-- 1. Supabase Einbindung -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- Footer -->
-  <footer id="kontakt">
-    <p>© 2026 Bourhan • Webentwicklung & Digitales Design</p>
-  </footer>
+<script>
+  // 2. Verbindung zu Supabase
+  const SUPABASE_URL = 'https://sbzujebymbjforpbizpm.supabase.co';
+  
+  // Füge hier deinen kopierten Key aus Supabase ein:
+  const SUPABASE_KEY = 'sb_publishable_1YJMMESMjAucjE_PvDE0Tw_9GHAgGCI'; 
 
-  <!-- JavaScript -->
-  <script>
-    const meinedaten = [
-      {
-        Titel: "Café Rheinblick",
-        Beschreibung: "Landingpage für ein gemütliches Café am Rhein mit Tisch-Reservierung.",
-        Bild: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500",
-        Link: "https://bourii4.github.io/cafe-landigpage/"
-      },
-      {
-        Titel: "AURA Immobilien",
-        Beschreibung: "Exklusive Landingpage für Luxusimmobilien mit Filter und Live-Hypothekenrechner.",
-        Bild: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500",
-        Link: "https://bourii4.github.io/Immobilien-Website/"
-      },
-      {
-        Titel: "PULSE Fitness & Club",
-        Beschreibung: "Dynamische Landingpage für ein Fitnessstudio mit Wochentags-Kursplan und Probetraining-Buchung.",
-        Bild: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500",
-        Link: "https://bourii4.github.io/fitness-website/"
-      },
-      {
-        Titel: "KICKZ Shop",
-        Beschreibung: "E-Commerce Online Shop im JD-Sports-Style mit dynamischer Produktdatenbank, Live-Filter & interaktivem Warenkorb.",
-        Bild: "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500",
-        Link: "https://bourii4.github.io/kickz-shop/"
-      }
-    ];
+  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  // 3. Daten live aus Supabase laden
+  async function loadProjects() {
     const container = document.getElementById("Projekt-Container");
+    if (!container) return;
 
-    meinedaten.forEach(item => {
+    const { data: projekte, error } = await _supabase
+      .from('projekte')
+      .select('*')
+      .order('id', { ascending: true });
+
+    if (error) {
+      console.error("Fehler beim Laden:", error);
+      return;
+    }
+
+    // Leert den Container und fügt die Karten ein
+    container.innerHTML = "";
+    projekte.forEach(item => {
       container.innerHTML += `
         <div class="project-card">
-          <div class="project-img" style="background-image: url('${item.Bild}');"></div>
+          <div class="project-img" style="background-image: url('${item.bild}')"></div>
           <div class="project-info">
-            <h3>${item.Titel}</h3>
-            <p>${item.Beschreibung}</p>
-            <a href="${item.Link}" target="_blank" class="project-link">Website ansehen →</a>
+            <h3>${item.titel}</h3>
+            <p>${item.beschreibung}</p>
+            <a href="${item.link}" target="_blank" class="project-link">Projekt ansehen</a>
           </div>
         </div>
       `;
     });
-  </script>
+  }
+
+  loadProjects();
+</script>
 </body>
 </html>
