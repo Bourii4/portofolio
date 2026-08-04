@@ -518,5 +518,50 @@
 
     document.addEventListener("DOMContentLoaded", loadProjects);
   </script>
+  script>
+    // Statische Projekte (lädt sofort, unabhängig von Supabase)
+    const meineProjekte = [
+      { titel: 'Café & Gastro Website', beschreibung: 'Mit Online-Reservierungssystem & Speisekarte.', bild: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600' },
+      { titel: 'E-Commerce Shop', beschreibung: 'Shopify Store mit Zahlungsanbindung und SEO.', bild: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600' },
+      { titel: 'Portfolio Website', beschreibung: 'Moderne High-Tech Landingpage für Dienstleister.', bild: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
+      { titel: 'Corporate Design', beschreibung: 'Re-Design & Performance-Optimierung.', bild: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600' }
+    ];
+
+    function renderProjects() {
+      const container = document.getElementById("Projekt-Container");
+      if (!container) return;
+
+      container.innerHTML = "";
+      meineProjekte.forEach(item => {
+        container.innerHTML += `
+          <div class="project-card">
+            <div class="project-img" style="background-image: url('${item.bild}')"></div>
+            <div class="project-info">
+              <h3>${item.titel}</h3>
+              <p>${item.beschreibung}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Rechner-Funktion
+    function calculatePrice() {
+      let total = 350;
+      const checkboxes = document.querySelectorAll('.calc-check');
+      checkboxes.forEach(box => {
+        if (box.checked && !box.disabled) {
+          total += parseInt(box.value) || 0;
+        }
+      });
+
+      const priceEl = document.getElementById('total-price');
+      if (priceEl) {
+        priceEl.innerText = 'ca. ' + total + ' €';
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", renderProjects);
+  </script>
 </body>
 </html>
