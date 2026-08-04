@@ -339,13 +339,10 @@
     </div>
   <!-- 1. Supabase Einbindung -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
   // 2. Verbindung zu Supabase
   const SUPABASE_URL = 'https://sbzujebymbjforpbizpm.supabase.co';
-  
-  // Füge hier deinen kopierten Key aus Supabase ein:
-  const SUPABASE_KEY = 'sb_publishable_iYJMMESMjAucjE_PvDE0Tw_9GHAgGCI'; 
+  const SUPABASE_KEY = 'sb_publishable_iYJMMESMjAucjE_PVdE0Tw_9GHAgGCI';
 
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -364,23 +361,30 @@
       return;
     }
 
+    // Falls keine Daten da sind
+    if (!projekte || projekte.length === 0) {
+      container.innerHTML = "<p>Keine Projekte gefunden.</p>";
+      return;
+    }
+
     // Leert den Container und fügt die Karten ein
     container.innerHTML = "";
     projekte.forEach(item => {
       container.innerHTML += `
         <div class="project-card">
-          <div class="project-img" style="background-image: url('${item.bild}')"></div>
+          <div class="project-img" style="background-image: url('${item.bild || ''}')"></div>
           <div class="project-info">
-            <h3>${item.titel}</h3>
-            <p>${item.beschreibung}</p>
-            <a href="${item.link}" target="_blank" class="project-link">Projekt ansehen</a>
+            <h3>${item.titel || ''}</h3>
+            <p>${item.beschreibung || ''}</p>
+            <a href="${item.link || '#'}" target="_blank" class="project-link">Projekt ansehen</a>
           </div>
         </div>
       `;
     });
   }
 
-  loadProjects();
+  // Erst ausführen, wenn die Seite komplett geladen ist!
+  document.addEventListener("DOMContentLoaded", loadProjects);
 </script>
 </body>
 </html>
