@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bourhan | Webentwicklung & Design</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg: #090d16;
@@ -33,7 +34,7 @@
       line-height: 1.6;
     }
 
-    /* Navigation / Header */
+    /* Navigation Header */
     .navbar {
       position: sticky;
       top: 0;
@@ -41,7 +42,7 @@
       background: rgba(9, 13, 22, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 18px 40px;
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -52,7 +53,6 @@
       font-weight: 800;
       color: var(--text);
       text-decoration: none;
-      letter-spacing: -0.5px;
     }
 
     .logo span {
@@ -79,17 +79,77 @@
     }
 
     .nav-cta {
-      background: var(--accent);
+      background: var(--accent) !important;
       color: #000 !important;
       padding: 8px 18px;
       border-radius: 20px;
       font-weight: 700 !important;
-      transition: transform 0.2s ease, background 0.2s ease !important;
+      transition: transform 0.2s, background 0.2s !important;
     }
 
     .nav-cta:hover {
       background: var(--accent-hover) !important;
       transform: translateY(-2px);
+    }
+
+    /* Hamburger Menu Button (Mobil) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 102;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Off-Canvas Menu von Rechts (JD-Sports Style) */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background: #0d1322;
+        box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 30px;
+        gap: 25px;
+        transition: right 0.3s ease-in-out;
+        z-index: 101;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 18px;
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+      }
+
+      .nav-cta {
+        text-align: center;
+        margin-top: 10px;
+      }
     }
 
     /* Hero Section */
@@ -119,7 +179,6 @@
       font-weight: 800;
       margin-bottom: 20px;
       line-height: 1.15;
-      letter-spacing: -1px;
     }
 
     .hero p {
@@ -145,7 +204,7 @@
       box-shadow: 0 10px 25px rgba(234, 179, 8, 0.25);
     }
 
-    /* Section Titles */
+    /* Section Styles */
     .section-title {
       text-align: center;
       font-size: 34px;
@@ -158,30 +217,29 @@
       color: var(--accent);
     }
 
-    /* Portfolio Grid */
-    .projects-grid {
+    /* Grid Layouts */
+    .projects-grid, .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    .project-card {
+    .project-card, .service-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
-    .project-card:hover {
+    .project-card:hover, .service-card:hover {
       transform: translateY(-6px);
       border-color: rgba(234, 179, 8, 0.4);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     }
 
     .project-img {
@@ -191,59 +249,25 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .project-info {
+    .project-info, .service-card {
       padding: 26px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
     }
 
-    .project-info h3 {
+    .project-info h3, .service-card h3 {
       font-size: 22px;
-      font-weight: 700;
       margin-bottom: 10px;
-      color: #fff;
     }
 
-    .project-info p {
+    .project-info p, .service-card p {
       color: var(--text-muted);
       font-size: 14px;
       margin-bottom: 24px;
-      flex-grow: 1;
-      line-height: 1.6;
     }
 
     .project-link {
       color: var(--accent);
       text-decoration: none;
       font-weight: 700;
-      font-size: 15px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: gap 0.2s ease;
-    }
-
-    .project-link:hover {
-      gap: 12px;
-    }
-
-    /* Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 35px 25px;
-      border-radius: 16px;
-      text-align: center;
     }
 
     .service-icon {
@@ -251,41 +275,116 @@
       margin-bottom: 15px;
     }
 
-    .service-card h3 {
-      color: #fff;
-      font-size: 20px;
-      margin-bottom: 12px;
-      font-weight: 700;
+    /* Contact & Opening Hours Section */
+    .contact-container {
+      max-width: 1100px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
     }
 
-    .service-card p {
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px;
+    }
+
+    .contact-info-box h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .hours-list {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 15px;
+    }
+
+    .hours-list li span.day {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      background: rgba(255,255,255,0.05);
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-submit {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-hover);
     }
 
     footer {
       text-align: center;
-      margin-top: 100px;
       padding: 30px;
       color: var(--text-muted);
       font-size: 14px;
       border-top: 1px solid var(--border);
-    }
-
-    /* Mobile Responsive Header */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 15px 20px;
-      }
-      .nav-links {
-        gap: 15px;
-      }
-      .nav-links a {
-        font-size: 13px;
-      }
-      .hero h1 {
-        font-size: 36px;
-      }
     }
   </style>
 </head>
@@ -294,33 +393,41 @@
   <!-- Navigation -->
   <nav class="navbar">
     <a href="#" class="logo">Bourhan<span>.dev</span></a>
-    <ul class="nav-links">
+    
+    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-menu">
       <li><a href="#projekte">Projekte</a></li>
       <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
       <li><a href="#kontakt" class="nav-cta">Anfragen</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero">
+  <section class="hero">
     <div class="hero-badge">Webentwicklung & Design</div>
     <h1>Ich helfe Unternehmen dabei, im Internet Kunden zu gewinnen.</h1>
     <p>Moderne Webseiten, schnelle Ladezeiten und durchdachtes E-Commerce Design.</p>
     <a href="#kontakt" class="btn-primary">Jetzt Projekt anfragen</a>
-  </header>
+  </section>
 
-  <!-- Meine Arbeit -->
+  <!-- Meine Arbeit Section -->
   <section id="projekte">
     <h2 class="section-title">Meine <span>Arbeit</span></h2>
     <div class="projects-grid" id="Projekt-Container">
-      <!-- JavaScript rendert hier die Karten -->
+      <!-- Supabase lädt hier die Projektkarten -->
     </div>
   </section>
 
-  <!-- Was ich biete -->
+  <!-- Leistungen Section -->
   <section id="leistungen">
     <h2 class="section-title">Was ich <span>biete</span></h2>
-    <div class="services-grid">
+    <div class="service-grid">
       <div class="service-card">
         <div class="service-icon">📱</div>
         <h3>Responsive Design</h3>
@@ -337,54 +444,113 @@
         <p>Klares Design mit integrierten Kontakt- und Reservierungsformularen.</p>
       </div>
     </div>
-  <!-- 1. Supabase Einbindung -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // 2. Verbindung zu Supabase
-  const SUPABASE_URL = 'https://sbzujebymbjforpbizpm.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNienVqZWJ5bWJqZm9ycGJpenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3OTEyMTAsImV4cCI6MjEwMTM2NzIxMH0.CQxZNhIidsdhpVisVyEDvoJ2RUOJLvsrxxVRxau6d0k';
+  </section>
 
-  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  <!-- Öffnungszeiten & Kontakt Section -->
+  <section id="oeffnungszeiten">
+    <h2 class="section-title">Kontakt & <span>Zeiten</span></h2>
+    <div class="contact-container">
+      
+      <!-- Öffnungszeiten & Instagram -->
+      <div class="contact-info-box">
+        <h3>🕒 Öffnungszeiten</h3>
+        <ul class="hours-list">
+          <li><span class="day">Montag - Sonntag</span> <span>14:00 - 18:00 Uhr</span></li>
+        </ul>
 
-  // 3. Daten live aus Supabase laden
-  async function loadProjects() {
-    const container = document.getElementById("Projekt-Container");
-    if (!container) return;
+        <h3>📸 Folge mir</h3>
+        <!-- Ersetze 'dein_instagram_username' durch deinen echten Instagram-Namen -->
+        <a href="https://instagram.com/burhan.webdesign" target="_blank" class="social-link">
+          Instagram Profil besuchen ➔
+        </a>
+      </div>
 
-    const { data: projekte, error } = await _supabase
-      .from('projekte')
-      .select('*')
-      .order('id', { ascending: true });
-
-    if (error) {
-      console.error("Fehler beim Laden:", error);
-      return;
-    }
-
-    // Falls keine Daten da sind
-    if (!projekte || projekte.length === 0) {
-      container.innerHTML = "<p>Keine Projekte gefunden.</p>";
-      return;
-    }
-
-    // Leert den Container und fügt die Karten ein
-    container.innerHTML = "";
-    projekte.forEach(item => {
-      container.innerHTML += `
-        <div class="project-card">
-          <div class="project-img" style="background-image: url('${item.bild || ''}')"></div>
-          <div class="project-info">
-            <h3>${item.titel || ''}</h3>
-            <p>${item.beschreibung || ''}</p>
-            <a href="${item.link || '#'}" target="_blank" class="project-link">Projekt ansehen</a>
+      <!-- Kontaktformular -->
+      <div class="contact-info-box" id="kontakt">
+        <h3>✉️ Nachricht senden</h3>
+        <form class="contact-form" action="https://formspree.io/f/xzdnneke" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Dein Name" required>
           </div>
-        </div>
-      `;
-    });
-  }
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" name="telefon" placeholder="Deine Telefonnummer">
+          </div>
+          <div class="form-group">
+            <textarea name="nachricht" rows="4" placeholder="Deine Nachricht..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Nachricht absenden</button>
+        </form>
+      </div>
 
-  // Erst ausführen, wenn die Seite komplett geladen ist!
-  document.addEventListener("DOMContentLoaded", loadProjects);
-</script>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Bourhan.dev – Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <!-- Supabase Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Mobile Navigation Toggle (JD Sports Style)
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Menü schließen, wenn ein Link angeklickt wird
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Supabase Anbindung
+    const SUPABASE_URL = 'https://sbzujebymbjforpbizpm.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNienVqZWJ5bWJqZm9ycGJpenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3OTEyMTAsImV4cCI6MjEwMTM2NzIxMH0.CQxZNhIidsdhpVisVyEDvoJ2RUOJLvsrxxVRxau6d0k';
+
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function loadProjects() {
+      const container = document.getElementById("Projekt-Container");
+      if (!container) return;
+
+      const { data: projekte, error } = await _supabase
+        .from('projekte')
+        .select('*')
+        .order('id', { ascending: true });
+
+      if (error) {
+        console.error("Fehler beim Laden:", error);
+        return;
+      }
+
+      if (!projekte || projekte.length === 0) {
+        container.innerHTML = "<p>Keine Projekte gefunden.</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+      projekte.forEach(item => {
+        container.innerHTML += `
+          <div class="project-card">
+            <div class="project-img" style="background-image: url('${item.bild || ''}')"></div>
+            <div class="project-info">
+              <h3>${item.titel || ''}</h3>
+              <p>${item.beschreibung || ''}</p>
+              <a href="${item.link || '#'}" target="_blank" class="project-link">Projekt ansehen ➔</a>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadProjects);
+  </script>
 </body>
 </html>
