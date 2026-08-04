@@ -458,110 +458,48 @@
   </footer>
 
   <!-- SCRIPT LOGIK -->
-  <script>
-    // Supabase Verbindung
-    const SUPABASE_URL = 'https://sbzujebmybjforpbizpm.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNienVqZWJ5bWJqZm9ycGJpenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3OTEyMTAsImV4cCI6MjEwMTM2NzIxMH0.CQxZNhIidsdhpVisVyEDvoJ2RUOJLvsrxxVRxau6d0k';
-    
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+ <script>
+  // Deine Werke direkt im Code
+  const meineWerke = [
+    { titel: 'Webdesign für Gastro', beschreibung: 'Moderne Website mit Online-Speisekarte.', bild: '' },
+    { titel: 'E-Commerce Online-Shop', beschreibung: 'Vollständiger Store mit Zahlungssystem.', bild: '' },
+    { titel: 'Portfolio Landingpage', beschreibung: 'High-Tech Design für Dienstleister.', bild: '' },
+    { titel: 'Corporate Website', beschreibung: 'SEO-optimierter Webauftritt.', bild: '' }
+  ];
 
-    // Lade Werke aus Supabase
-    async function loadProjects() {
-      const container = document.getElementById("Projekt-Container");
-      if (!container) return;
+  function zeigeWerke() {
+    const container = document.getElementById("Projekt-Container");
+    if (!container) return;
 
-      const { data: projekte, error } = await _supabase
-        .from('projekte')
-        .select('*')
-        .order('id', { ascending: true });
-
-      if (error) {
-        console.error("Fehler beim Laden:", error);
-        container.innerHTML = "<p style='color: var(--text-muted);'>Werke konnten nicht geladen werden.</p>";
-        return;
-      }
-
-      if (!projekte || projekte.length === 0) {
-        container.innerHTML = "<p style='color: var(--text-muted);'>Keine Werke vorhanden.</p>";
-        return;
-      }
-
-      container.innerHTML = "";
-      projekte.forEach(item => {
-        container.innerHTML += `
-          <div class="project-card">
-            <div class="project-img" style="background-image: url('${item.bild || ''}')"></div>
-            <div class="project-info">
-              <h3>${item.titel || 'Projekt'}</h3>
-              <p>${item.beschreibung || ''}</p>
-            </div>
+    container.innerHTML = "";
+    meineWerke.forEach(item => {
+      container.innerHTML += `
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('${item.bild}')"></div>
+          <div class="project-info">
+            <h3>${item.titel}</h3>
+            <p>${item.beschreibung}</p>
           </div>
-        `;
-      });
-    }
+        </div>
+      `;
+    });
+  }
 
-    // Rechner-Funktion
-    function calculatePrice() {
-      let total = 350; // Basis
-      const checkboxes = document.querySelectorAll('.calc-check');
-      checkboxes.forEach(box => {
-        if (box.checked && !box.disabled) {
-          total += parseInt(box.value) || 0;
-        }
-      });
-
-      const priceEl = document.getElementById('total-price');
-      if (priceEl) {
-        priceEl.innerText = 'ca. ' + total + ' €';
+  // Preisschätzer
+  function calculatePrice() {
+    let total = 350;
+    const checkboxes = document.querySelectorAll('.calc-check');
+    checkboxes.forEach(box => {
+      if (box.checked && !box.disabled) {
+        total += parseInt(box.value) || 0;
       }
-    }
+    });
 
-    document.addEventListener("DOMContentLoaded", loadProjects);
-  </script>
-  script>
-    // Statische Projekte (lädt sofort, unabhängig von Supabase)
-    const meineProjekte = [
-      { titel: 'Café & Gastro Website', beschreibung: 'Mit Online-Reservierungssystem & Speisekarte.', bild: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600' },
-      { titel: 'E-Commerce Shop', beschreibung: 'Shopify Store mit Zahlungsanbindung und SEO.', bild: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600' },
-      { titel: 'Portfolio Website', beschreibung: 'Moderne High-Tech Landingpage für Dienstleister.', bild: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
-      { titel: 'Corporate Design', beschreibung: 'Re-Design & Performance-Optimierung.', bild: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600' }
-    ];
+    const priceEl = document.getElementById('total-price');
+    if (priceEl) priceEl.innerText = 'ca. ' + total + ' €';
+  }
 
-    function renderProjects() {
-      const container = document.getElementById("Projekt-Container");
-      if (!container) return;
-
-      container.innerHTML = "";
-      meineProjekte.forEach(item => {
-        container.innerHTML += `
-          <div class="project-card">
-            <div class="project-img" style="background-image: url('${item.bild}')"></div>
-            <div class="project-info">
-              <h3>${item.titel}</h3>
-              <p>${item.beschreibung}</p>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    // Rechner-Funktion
-    function calculatePrice() {
-      let total = 350;
-      const checkboxes = document.querySelectorAll('.calc-check');
-      checkboxes.forEach(box => {
-        if (box.checked && !box.disabled) {
-          total += parseInt(box.value) || 0;
-        }
-      });
-
-      const priceEl = document.getElementById('total-price');
-      if (priceEl) {
-        priceEl.innerText = 'ca. ' + total + ' €';
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", renderProjects);
-  </script>
+  document.addEventListener("DOMContentLoaded", zeigeWerke);
+</script>
 </body>
 </html>
