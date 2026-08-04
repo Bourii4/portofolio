@@ -3,649 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bourhan | Webentwicklung & Design</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Bourhan.dev | Webdesign & Entwicklung</title>
+  
+  <!-- Supabase Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
   <style>
-    :root {
-      --bg: #090d16;
-      --card-bg: #111827;
-      --accent: #eab308;
-      --accent-hover: #facc15;
-      --text: #f9fafb;
-      --text-muted: #9ca3af;
-      --border: rgba(255, 255, 255, 0.08);
-    }
+    /* Grundlegendes Design */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; padding-bottom: 2rem; }
+    header { background: #1e293b; padding: 1.5rem 2rem; text-align: center; border-bottom: 1px solid #334155; }
+    header h1 { color: #38bdf8; margin-bottom: 0.5rem; }
+    
+    section { max-width: 900px; margin: 2rem auto; padding: 1.5rem; background: #1e293b; border-radius: 8px; border: 1px solid #334155; }
+    h2 { color: #38bdf8; margin-bottom: 1rem; border-bottom: 2px solid #334155; padding-bottom: 0.5rem; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+    /* Was ich biete (Services) */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .service-card { background: #0f172a; padding: 1.2rem; border-radius: 6px; border: 1px solid #334155; }
+    .service-card h3 { color: #f1f5f9; margin-bottom: 0.5rem; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    /* Projekte (Supabase Container) */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .project-card { background: #0f172a; border-radius: 8px; overflow: hidden; border: 1px solid #334155; }
+    .project-img { width: 100%; height: 180px; background-size: cover; background-position: center; background-color: #334155; }
+    .project-info { padding: 1rem; }
+    .project-info h3 { color: #38bdf8; margin-bottom: 0.5rem; }
 
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    /* Preisrechner */
+    .calc-option { display: block; margin: 0.8rem 0; cursor: pointer; }
+    .calc-option input { margin-right: 0.5rem; transform: scale(1.2); }
+    .total-display { font-size: 1.5rem; font-weight: bold; color: #38bdf8; margin-top: 1.5rem; text-align: right; }
 
-    /* Navigation Header */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(9, 13, 22, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 15px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    /* Kontaktformular */
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.4rem; color: #cbd5e1; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 1rem; }
+    .btn-submit { background: #38bdf8; color: #0f172a; font-weight: bold; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; width: 100%; font-size: 1rem; }
+    .btn-submit:hover { background: #0284c7; color: #fff; }
 
-    .logo {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-cta {
-      background: var(--accent) !important;
-      color: #000 !important;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: 700 !important;
-      transition: transform 0.2s, background 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--accent-hover) !important;
-      transform: translateY(-2px);
-    }
-
-    /* Hamburger Menu Button (Mobil) */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 102;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background-color: var(--text);
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    /* Off-Canvas Menu von Rechts (JD-Sports Style) */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: #0d1322;
-        box-shadow: -5px 0 25px rgba(0,0,0,0.5);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 80px 30px;
-        gap: 25px;
-        transition: right 0.3s ease-in-out;
-        z-index: 101;
-      }
-
-      .nav-links.active {
-        right: 0;
-      }
-
-      .nav-links a {
-        font-size: 18px;
-        width: 100%;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 10px;
-      }
-
-      .nav-cta {
-        text-align: center;
-        margin-top: 10px;
-      }
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 100px 20px 80px;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(234, 179, 8, 0.1);
-      color: var(--accent);
-      border: 1px solid rgba(234, 179, 8, 0.3);
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .hero h1 {
-      font-size: 52px;
-      font-weight: 800;
-      margin-bottom: 20px;
-      line-height: 1.15;
-    }
-
-    .hero p {
-      color: var(--text-muted);
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
-
-    .btn-primary {
-      background-color: var(--accent);
-      color: #000;
-      font-weight: 700;
-      padding: 16px 32px;
-      border-radius: 30px;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(234, 179, 8, 0.25);
-    }
-
-    /* Section Styles */
-    .section-title {
-      text-align: center;
-      font-size: 34px;
-      font-weight: 800;
-      color: #fff;
-      margin: 80px 0 40px;
-    }
-
-    .section-title span {
-      color: var(--accent);
-    }
-
-    /* Grid Layouts */
-    .projects-grid, .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .project-card, .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .project-card:hover, .service-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(234, 179, 8, 0.4);
-    }
-
-    .project-img {
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-info, .service-card {
-      padding: 26px;
-    }
-
-    .project-info h3, .service-card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .project-info p, .service-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
-
-    .project-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .service-icon {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-
-    /* Contact & Opening Hours Section */
-    .contact-container {
-      max-width: 1100px;
-      margin: 0 auto 100px;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .contact-info-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 35px;
-    }
-
-    .contact-info-box h3 {
-      font-size: 22px;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-
-    .hours-list {
-      list-style: none;
-      margin-bottom: 30px;
-    }
-
-    .hours-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-
-    .hours-list li span.day {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      background: rgba(255,255,255,0.05);
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: 0.3s;
-    }
-
-    .social-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Contact Form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      font-size: 15px;
-      outline: none;
-    }
-
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: var(--accent);
-    }
-
-    .btn-submit {
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn-submit:hover {
-      background: var(--accent-hover);
-    }
-
-   footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--text-muted);
-      font-size: 14px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .social-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 45px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      color: var(--text);
-      transition: all 0.3s ease;
-    }
-
-    .social-icon:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .social-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-    /* Angebots-Rechner Style */
-    .calculator-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 35px;
-      max-width: 800px;
-      margin: 0 auto 80px;
-    }
-
-    .calc-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin: 25px 0;
-    }
-
-    .calc-option {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      padding: 15px;
-      border-radius: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.2s ease;
-    }
-
-    .calc-option:hover {
-      border-color: rgba(234, 179, 8, 0.5);
-    }
-
-    .calc-option input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--accent);
-      cursor: pointer;
-    }
-
-    .calc-price-box {
-      text-align: center;
-      background: rgba(234, 179, 8, 0.1);
-      border: 1px solid rgba(234, 179, 8, 0.3);
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 25px;
-    }
-
-    .calc-price-box h4 {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .calc-price-box .price {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--accent);
-    }
+    /* Footer */
+    footer { text-align: center; padding: 2rem; background: #090d16; margin-top: 3rem; border-top: 1px solid #334155; }
+    footer a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <a href="#" class="logo">Bourhan<span>.dev</span></a>
-    
-    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menü öffnen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <header>
+    <h1>Bourhan.dev</h1>
+    <p>Moderne Webentwicklung & Maßgeschneiderte Websites</p>
+  </header>
 
-    <ul class="nav-links" id="nav-menu">
-      <li><a href="#projekte">Projekte</a></li>
-      <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
-      <li><a href="#kontakt" class="nav-cta">Anfragen</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-badge">Webentwicklung & Design</div>
-    <h1>Ich helfe Unternehmen dabei, im Internet Kunden zu gewinnen.</h1>
-    <p>Moderne Webseiten, schnelle Ladezeiten und durchdachtes E-Commerce Design.</p>
-    <a href="#kontakt" class="btn-primary">Jetzt Projekt anfragen</a>
+  <!-- 1. WAS ICH BIETE -->
+  <section id="services">
+    <h2>Was ich biete</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>🎨 Individuelles Webdesign</h3>
+        <p>Einzigartige Designs, die perfekt zu deiner Marke passen – modern, übersichtlich und ansprechend.</p>
+      </div>
+      <div class="service-card">
+        <h3>📱 Responsive Design</h3>
+        <p>Deine Website sieht auf allen Geräten perfekt aus – ob Smartphone, Tablet oder Desktop PC.</p>
+      </div>
+      <div class="service-card">
+        <h3>⚡ Schnelle Ladezeiten</h3>
+        <p>Optimierter Code sorgt dafür, dass deine Seite extrem schnell lädt und Kunden nicht abspringen.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Meine Arbeit Section -->
+  <!-- 2. MEINE ARBEIT (PROJEKTE AUS SUPABASE) -->
   <section id="projekte">
-    <h2 class="section-title">Meine <span>Arbeit</span></h2>
-    <div class="projects-grid" id="Projekt-Container">
-      <!-- Supabase lädt hier die Projektkarten -->
+    <h2>Meine Arbeit</h2>
+    <div id="Projekt-Container" class="projects-grid">
+      <p>Projekte werden geladen...</p>
     </div>
   </section>
 
-  <!-- Leistungen Section -->
-  <section id="leistungen">
-    <h2 class="section-title">Was ich <span>biete</span></h2>
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="service-icon">📱</div>
-        <h3>Responsive Design</h3>
-        <p>Deine Website sieht auf Smartphones, Tablets und Laptops perfekt aus.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <h3>Schnelle Ladezeiten</h3>
-        <p>Optimierter Code, damit Kunden nicht lange auf deine Seite warten müssen.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎯</div>
-        <h3>Kunden-Gewinnung</h3>
-        <p>Klares Design mit integrierten Kontakt- und Reservierungsformularen.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Öffnungszeiten & Kontakt Section -->
-  <section id="oeffnungszeiten">
-    <h2 class="section-title">Kontakt & <span>Zeiten</span></h2>
-    <div class="contact-container">
-      
-      <!-- Öffnungszeiten & Instagram -->
-      <div class="contact-info-box">
-        <h3>🕒 Öffnungszeiten</h3>
-        <ul class="hours-list">
-          <li><span class="day">Montag - Sonntag</span> <span>14:00 - 18:00 Uhr</span></li>
-        </ul>
-
-      </div>
-
-      <!-- Kontaktformular -->
-      <div class="contact-info-box" id="kontakt">
-        <h3>✉️ Nachricht senden</h3>
-        <form class="contact-form" action="https://formspree.io/f/xzdnneke" method="POST">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Dein Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Deine E-Mail-Adresse" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" name="telefon" placeholder="Deine Telefonnummer">
-          </div>
-          <div class="form-group">
-            <textarea name="nachricht" rows="4" placeholder="Deine Nachricht..." required></textarea>
-          </div>
-          <button type="submit" class="btn-submit">Nachricht absenden</button>
-        </form>
-      </div>
-
-    </div>
-  </section>
-  <!-- Angebot Rechner Section -->
+  <!-- 3. PREISRECHNER -->
   <section id="rechner">
-    <h2 class="section-title">Projekt <span>schätzen</span></h2>
-    <div class="calculator-card">
-      <p style="text-align: center; color: var(--text-muted);">Wähle aus, was deine Website braucht, um eine Richtpreisschätzung zu erhalten:</p>
+    <h2>Preis-Schätzer</h2>
+    <p>Wähle deine gewünschten Zusatzfunktionen aus:</p>
+    
+    <label class="calc-option">
+      <input type="checkbox" value="0" checked disabled> Basis-Webseite (Inklusive) — <strong>350 €</strong>
+    </label>
+    <label class="calc-option">
+      <input type="checkbox" value="100" class="calc-check" onchange="calculatePrice()"> Zusätzliche Unterseiten (+100 €)
+    </label>
+    <label class="calc-option">
+      <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()"> Kontaktformular & Einbindung (+150 €)
+    </label>
+    <label class="calc-option">
+      <input type="checkbox" value="200" class="calc-check" onchange="calculatePrice()"> SEO-Optimierung für Google (+200 €)
+    </label>
 
-      <div class="calc-options">
-        <label class="calc-option">
-          <input type="checkbox" value="350" class="calc-check" checked disabled>
-          <span>One-Page Design (Basis)</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
-          <span>Tisch-Reservierung (Café)</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="200" class="calc-check" onchange="calculatePrice()">
-          <span>Supabase Datenbank</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
-          <span>SEO / Google-Optimierung</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="550" class="calc-check" onchange="calculatePrice()">
-          <span>Shopify Online-Shop</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="100" class="calc-check" onchange="calculatePrice()">
-          <span>Google Maps & Anfahrt</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="80" class="calc-check" onchange="calculatePrice()">
-          <span>Express-Lieferung (3 Tage)</span>
-        </label>
-      </div>
-
-      <div class="calc-price-box">
-        <h4>Geschätzter Richtpreis:</h4>
-        <div class="price" id="total-price">ca. 300 €</div>
-        <a href="#kontakt" class="btn-primary" style="margin-top: 15px; font-size: 14px; padding: 10px 20px;">Angebot anfragen</a>
-      </div>
-    </div>
+    <div class="total-display">Geschätzter Preis: <span id="total-price">ca. 350 €</span></div>
   </section>
 
-  <!-- Supabase Integration -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 4. KONTAKTFORMULAR -->
+  <section id="kontakt">
+    <h2>Kontaktieren Sie mich</h2>
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Dein Name">
+      </div>
+      <div class="form-group">
+        <label for="email">E-Mail-Adresse:</label>
+        <input type="email" id="email" name="email" required placeholder="deine@email.de">
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefonnummer:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Deine Telefonnummer">
+      </div>
+      <div class="form-group">
+        <label for="message">Deine Nachricht:</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Wie kann ich dir helfen?"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Nachricht senden</button>
+    </form>
+  </section>
+
+  <!-- 5. FOOTER -->
+  <footer>
+    <p>Folge mir auf Instagram: <a href="https://instagram.com/burhan.webdesign" target="_blank">@burhan.webdesign</a></p>
+    <p style="margin-top: 0.5rem; color: #94a3b8; font-size: 0.9rem;">© 2026 Bourhan.dev - Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIK -->
   <script>
-    // Mobile Navigation Toggle (JD Sports Style)
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const navMenu = document.getElementById('nav-menu');
-
-    if (menuBtn && navMenu) {
-      menuBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-      });
-
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('active');
-        });
-      });
-    }
-
-    // Supabase Anbindung
+    // Supabase Anbindung mit deinen korrekten Daten
     const SUPABASE_URL = 'https://sbzujebmybjforpbizpm.supabase.co';
-    const SUPABASE_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNienVqZWJ5bWJqZm9ycGJpenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3OTEyMTAsImV4cCI6MjEwMTM2NzIxMH0.CQxZNhIidsdhpVisVyEDvoJ2RUOJLvsrxxVRxau6d0k
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNienVqZWJ5bWJqZm9ycGJpenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3OTEyMTAsImV4cCI6MjEwMTM2NzIxMH0.CQxZNhIidsdhpVisVyEDvoJ2RUOJLvsrxxVRxau6d0k';
+    
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+    // Projekte aus Supabase laden
     async function loadProjects() {
       const container = document.getElementById("Projekt-Container");
       if (!container) return;
@@ -657,6 +153,7 @@
 
       if (error) {
         console.error("Fehler beim Laden:", error);
+        container.innerHTML = "<p>Fehler beim Laden der Projekte.</p>";
         return;
       }
 
@@ -673,43 +170,30 @@
             <div class="project-info">
               <h3>${item.titel || ''}</h3>
               <p>${item.beschreibung || ''}</p>
-              <a href="${item.link || '#'}" target="_blank" class="project-link">Projekt ansehen →</a>
             </div>
           </div>
         `;
       });
-      document.addEventListener("DOMContentLoaded", loadProjects);
-
-// Rechner Logik
-function calculatePrice() {
-  let total = 350; // Basis-Preis
-  const checkboxes = document.querySelectorAll('.calc-check');
-  checkboxes.forEach(box => {
-    if (box.checked && !box.disabled) {
-      total += parseInt(box.value) || 0;
     }
-  });
 
-  const priceEl = document.getElementById('total-price');
-  if (priceEl) {
-    priceEl.innerText = 'ca. ' + total + ' €';
-  }
-}
-</script>
+    // Preis-Rechner Logik
+    function calculatePrice() {
+      let total = 350; // Basis-Preis
+      const checkboxes = document.querySelectorAll('.calc-check');
+      checkboxes.forEach(box => {
+        if (box.checked && !box.disabled) {
+          total += parseInt(box.value) || 0;
+        }
+      });
 
-<!-- HIER ERST KOMMT DER FOOTER (VOR BODY UND HTML) -->
-<footer class="footer">
-  <div class="social-links">
-    <a href="https://instagram.com/burhan.webdesign" target="_blank" class="social-icon" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-    </a>
-  </div>
-  <p>© 2026 Bourhan.dev - Alle Rechte vorbehalten.</p>
-</footer>
+      const priceEl = document.getElementById('total-price');
+      if (priceEl) {
+        priceEl.innerText = 'ca. ' + total + ' €';
+      }
+    }
 
-<!-- GANZ AM ENDE WERDEN BODY UND HTML GESCHLOSSEN -->
+    // Skript beim Laden ausführen
+    document.addEventListener("DOMContentLoaded", loadProjects);
+  </script>
 </body>
 </html>
-  
