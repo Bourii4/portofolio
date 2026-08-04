@@ -415,6 +415,66 @@
       height: 22px;
       fill: currentColor;
     }
+    /* Angebots-Rechner Style */
+    .calculator-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px;
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+
+    .calc-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .calc-option {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .calc-option:hover {
+      border-color: rgba(234, 179, 8, 0.5);
+    }
+
+    .calc-option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .calc-price-box {
+      text-align: center;
+      background: rgba(234, 179, 8, 0.1);
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+    }
+
+    .calc-price-box h4 {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .calc-price-box .price {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -582,6 +642,69 @@
     }
 
     document.addEventListener("DOMContentLoaded", loadProjects);
+    !-- Angebot Rechner Section -->
+  <section id="rechner">
+    <h2 class="section-title">Projekt <span>schätzen</span></h2>
+    <div class="calculator-card">
+      <p style="text-align: center; color: var(--text-muted);">Wähle aus, was deine Website braucht, um eine Richtpreisschätzung zu erhalten:</p>
+      
+      <div class="calc-options">
+        <label class="calc-option">
+          <input type="checkbox" value="290" class="calc-check" checked disabled>
+          <span>One-Page Design (Basis)</span>
+        </label>
+        
+        <label class="calc-option">
+          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
+          <span>Tisch-Reservierung (Café)</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="200" class="calc-check" onchange="calculatePrice()">
+          <span>Supabase Datenbank</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="550" class="calc-check" onchange="calculatePrice()">
+      <label class="calc-option">
+  <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
+  <span>SEO / Google-Optimierung</span>
+</label>
+          <span>Shopify Online-Shop</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="100" class="calc-check" onchange="calculatePrice()">
+          <span>Google Maps & Anfahrt</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="80" class="calc-check" onchange="calculatePrice()">
+          <span>Express-Lieferung (3 Tage)</span>
+        </label>
+      </div>
+
+      <div class="calc-price-box">
+        <h4>Geschätzter Richtpreis:</h4>
+        <div class="price" id="total-price">ca. 290 €</div>
+        <a href="#kontakt" class="btn-primary" style="margin-top: 15px; font-size: 14px; padding: 10px 20px;">Angebot anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function calculatePrice() {
+      let total = 0;
+      const checkboxes = document.querySelectorAll('.calc-check');
+      
+      checkboxes.forEach(box => {
+        if (box.checked) {
+          total += parseInt(box.value);
+        }
+      });
+
+      document.getElementById('total-price').innerText = 'ca. ' + total + ' €';
+    }
   </script>
 </body>
 </html>
