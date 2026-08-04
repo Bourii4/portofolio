@@ -580,8 +580,59 @@
         </svg>
       </a>
     </div>
-    <p>© 2026 Bourhan.dev – Alle Rechte vorbehalten.</p>
+    <p>© 2026 Bourhan.dev - Alle Rechte vorbehalten.</p>
   </footer>
+
+  <!-- Angebot Rechner Section -->
+  <section id="rechner">
+    <h2 class="section-title">Projekt <span>schätzen</span></h2>
+    <div class="calculator-card">
+      <p style="text-align: center; color: var(--text-muted);">Wähle aus, was deine Website braucht, um eine Richtpreisschätzung zu erhalten:</p>
+
+      <div class="calc-options">
+        <label class="calc-option">
+          <input type="checkbox" value="300" class="calc-check" checked disabled>
+          <span>One-Page Design (Basis)</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
+          <span>Tisch-Reservierung (Café)</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="200" class="calc-check" onchange="calculatePrice()">
+          <span>Supabase Datenbank</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
+          <span>SEO / Google-Optimierung</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="550" class="calc-check" onchange="calculatePrice()">
+          <span>Shopify Online-Shop</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="100" class="calc-check" onchange="calculatePrice()">
+          <span>Google Maps & Anfahrt</span>
+        </label>
+
+        <label class="calc-option">
+          <input type="checkbox" value="80" class="calc-check" onchange="calculatePrice()">
+          <span>Express-Lieferung (3 Tage)</span>
+        </label>
+      </div>
+
+      <div class="calc-price-box">
+        <h4>Geschätzter Richtpreis:</h4>
+        <div class="price" id="total-price">ca. 300 €</div>
+        <a href="#kontakt" class="btn-primary" style="margin-top: 15px; font-size: 14px; padding: 10px 20px;">Angebot anfragen</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Supabase Integration -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -590,21 +641,21 @@
     const menuBtn = document.getElementById('mobile-menu-btn');
     const navMenu = document.getElementById('nav-menu');
 
-    menuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    // Menü schließen, wenn ein Link angeklickt wird
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+    if (menuBtn && navMenu) {
+      menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
       });
-    });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    }
 
     // Supabase Anbindung
-    const SUPABASE_URL = 'https://sbzujebymbjforpbizpm.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNienVqZWJ5bWJqZm9ycGJpenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3OTEyMTAsImV4cCI6MjEwMTM2NzIxMH0.CQxZNhIidsdhpVisVyEDvoJ2RUOJLvsrxxVRxau6d0k';
-
+    const SUPABASE_URL = 'https://sbzujebmybjforpbizpm.supabase.co';
+    const SUPABASE_KEY = 'eyJh...'; // DEIN KEY HIER
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     async function loadProjects() {
@@ -634,75 +685,28 @@
             <div class="project-info">
               <h3>${item.titel || ''}</h3>
               <p>${item.beschreibung || ''}</p>
-              <a href="${item.link || '#'}" target="_blank" class="project-link">Projekt ansehen ➔</a>
+              <a href="${item.link || '#'}" target="_blank" class="project-link">Projekt ansehen →</a>
             </div>
           </div>
         `;
       });
     }
-  </script>
-    <!-- Angebot Rechner Section -->
-  <section id="rechner">
-    <h2 class="section-title">Projekt <span>schätzen</span></h2>
-    <div class="calculator-card">
-      <p style="text-align: center; color: var(--text-muted);">Wähle aus, was deine Website braucht, um eine Richtpreisschätzung zu erhalten:</p>
-      
-      <div class="calc-options">
-        <label class="calc-option">
-          <input type="checkbox" value="300" class="calc-check" checked disabled>
-          <span>One-Page Design (Basis)</span>
-        </label>
-        
-        <label class="calc-option">
-          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
-          <span>Tisch-Reservierung (Café)</span>
-        </label>
 
-        <label class="calc-option">
-          <input type="checkbox" value="200" class="calc-check" onchange="calculatePrice()">
-          <span>Supabase Datenbank</span>
-        </label>
+    document.addEventListener("DOMContentLoaded", loadProjects);
 
-        <label class="calc-option">
-          <input type="checkbox" value="550" class="calc-check" onchange="calculatePrice()">
-      <label class="calc-option">
-  <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
-  <span>SEO / Google-Optimierung</span>
-</label>
-          <span>Shopify Online-Shop</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="100" class="calc-check" onchange="calculatePrice()">
-          <span>Google Maps & Anfahrt</span>
-        </label>
-
-        <label class="calc-option">
-          <input type="checkbox" value="80" class="calc-check" onchange="calculatePrice()">
-          <span>Express-Lieferung (3 Tage)</span>
-        </label>
-      </div>
-
-      <div class="calc-price-box">
-        <h4>Geschätzter Richtpreis:</h4>
-        <div class="price" id="total-price">ca. 290 €</div>
-        <a href="#kontakt" class="btn-primary" style="margin-top: 15px; font-size: 14px; padding: 10px 20px;">Angebot anfragen</a>
-      </div>
-    </div>
-  </section>
-
-  <script>
+    // Rechner Logik
     function calculatePrice() {
-      let total = 0;
+      let total = 300; // Basis-Preis
       const checkboxes = document.querySelectorAll('.calc-check');
-      
       checkboxes.forEach(box => {
-        if (box.checked) {
+        if (box.checked && !box.disabled) {
           total += parseInt(box.value);
         }
       });
-
-      document.getElementById('total-price').innerText = 'ca. ' + total + ' €';
+      const priceEl = document.getElementById('total-price');
+      if (priceEl) {
+        priceEl.innerText = 'ca. ' + total + ' €';
+      }
     }
   </script>
 </body>
