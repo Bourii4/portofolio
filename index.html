@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bourhan.dev | Portfolio & System</title>
+  <title>Bourhan.dev | Official Website</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
       --bg-alt: #f8fafc;
       --text-main: #0f172a;
       --text-muted: #475569;
-      --navy: #0f2a4a;         /* Edles Dunkelblau */
+      --navy: #0f2a4a;
       --navy-light: #1e40af;
       --border-color: #e2e8f0;
       --card-bg: #ffffff;
@@ -33,101 +33,94 @@
 
     .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
-    /* HEADER */
+    /* HEADER & MENÜ */
     header {
       position: sticky; top: 0;
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      padding: 18px 0;
+      padding: 16px 0;
     }
     .nav-container { display: flex; justify-content: space-between; align-items: center; }
     .nav-logo { font-size: 26px; font-weight: 800; color: var(--navy); text-decoration: none; }
     .nav-logo span { color: var(--navy-light); }
-    .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
-    .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 15px; transition: color 0.2s; }
+    
+    .nav-menu-wrapper { display: flex; align-items: center; gap: 20px; }
+    .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 15px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--navy); }
-    .btn-nav { background: var(--navy); color: #fff !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; }
+    .btn-nav { background: var(--navy); color: #fff !important; padding: 10px 20px; border-radius: 8px; }
 
     /* HERO */
-    .hero { padding: 90px 0 70px 0; text-align: center; }
+    .hero { padding: 90px 0 60px 0; text-align: center; }
     .hero-title { font-size: 46px; font-weight: 800; color: var(--navy); max-width: 850px; margin: 0 auto 20px auto; line-height: 1.2; }
     .hero-subtitle { font-size: 18px; color: var(--text-muted); max-width: 650px; margin: 0 auto 32px auto; }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; }
-    .btn-primary { background: var(--navy); color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; }
-    .btn-secondary { background: #fff; color: var(--navy); border: 1px solid var(--border-color); padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; }
 
     /* SECTIONS */
-    section { padding: 80px 0; }
+    section { padding: 70px 0; }
     .section-alt { background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
     .section-header { text-align: center; max-width: 700px; margin: 0 auto 48px auto; }
     .section-title { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
     .section-subtitle { font-size: 17px; color: var(--text-muted); }
 
-    /* PROJEKTE */
+    /* PROJEKTE (MEINE ARBEIT) */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-    .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; }
+    .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s; }
     .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .project-header-box { height: 160px; background: linear-gradient(135deg, #1e40af, #0f2a4a); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; padding: 16px; text-align: center; }
+    .project-img-box img { width: 100%; height: 180px; object-fit: cover; display: block; }
     .project-body { padding: 20px; }
-    .project-body p { color: var(--text-muted); font-size: 14px; margin-top: 6px; }
+    .project-body h3 { font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+    .project-body p { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; }
+    .btn-project { display: inline-block; padding: 8px 16px; background: var(--bg-alt); border: 1px solid var(--border-color); color: var(--navy); text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 13px; }
+    .btn-project:hover { background: var(--navy); color: #fff; }
 
-    /* RECHNER / PREIS-KASTEN */
+    /* RECHNER */
     .calc-wrapper { background: #fff; border: 2px solid var(--navy); border-radius: var(--radius); padding: 36px; max-width: 780px; margin: 0 auto; box-shadow: var(--shadow-md); }
-    .calc-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-    .calc-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-alt); cursor: pointer; transition: background 0.2s; }
-    .calc-item:hover { background: #f1f5f9; }
+    .calc-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .calc-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-alt); cursor: pointer; user-select: none; }
     .calc-item.fixed { background: #eff6ff; border-color: #bfdbfe; cursor: default; }
-    .calc-left { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; }
-    .calc-left input { width: 18px; height: 18px; accent-color: var(--navy); cursor: pointer; }
+    .calc-left { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 15px; }
+    .calc-left input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--navy); cursor: pointer; }
     .calc-price { font-weight: 700; color: var(--navy); }
-    
     .calc-total-box { background: var(--navy); color: #fff; padding: 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-    .calc-total-title { font-size: 18px; font-weight: 600; }
     .calc-total-amount { font-size: 32px; font-weight: 800; }
 
-    /* SYSTEM ERKLÄRUNG */
-    .system-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .system-card { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px; }
-    .system-card h4 { font-size: 18px; color: var(--navy); margin-bottom: 8px; }
-
-    /* KONTAKT */
-    .contact-form { max-width: 580px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); padding: 36px; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    /* KONTAKTFORMULAR */
+    .contact-form { max-width: 600px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); padding: 36px; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
     .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 15px; }
     .btn-submit { width: 100%; background: var(--navy); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; }
 
-    /* FOOTER (DUNKELBLAU MIT WEISS) */
+    /* FOOTER */
     footer { background: var(--navy); color: #ffffff; padding: 50px 0 25px 0; }
     .footer-content { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
     .footer-brand h2 { color: #ffffff; font-size: 26px; font-weight: 800; margin-bottom: 6px; }
-    .footer-brand p { opacity: 0.8; font-size: 14px; }
     .footer-info h4 { font-size: 16px; margin-bottom: 10px; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 4px; display: inline-block; }
     .footer-info p { margin-bottom: 6px; opacity: 0.9; font-size: 15px; }
     .footer-info a { color: #ffffff; text-decoration: underline; font-weight: 500; }
-    
-    .insta-link { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); color: #fff !important; text-decoration: none !important; padding: 8px 14px; border-radius: 6px; margin-top: 6px; font-size: 14px; transition: background 0.2s; }
-    .insta-link:hover { background: rgba(255,255,255,0.25); }
+    .insta-link { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); color: #fff !important; text-decoration: none !important; padding: 8px 14px; border-radius: 6px; margin-top: 6px; font-size: 14px; }
     .insta-icon { width: 18px; height: 18px; fill: currentColor; }
-
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); margin-top: 36px; padding-top: 20px; text-align: center; font-size: 13px; opacity: 0.7; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / MENÜ -->
+  <!-- HEADER MIT MENÜ -->
   <header>
     <div class="container">
       <div class="nav-container">
         <a href="#" class="nav-logo">Bourhan<span>.dev</span></a>
-        <ul class="nav-links">
-          <li><a href="#projekte">Meine Arbeit</a></li>
-          <li><a href="#rechner">Rechner</a></li>
-          <li><a href="#system">Das System</a></li>
-          <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
-        </ul>
+        <div class="nav-menu-wrapper">
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#arbeit">Meine Arbeit</a></li>
+            <li><a href="#proportionen-info">Die 6 Proportionen</a></li>
+            <li><a href="#rechner">Rechner</a></li>
+            <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -135,65 +128,93 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero-title">Professionelle Umsetzung nach maßgeschneidertem System</h1>
-      <p class="hero-subtitle">Wähle die passende Basis und stelle dein Paket individuell zusammen.</p>
-      <div class="hero-buttons">
-        <a href="#projekte" class="btn-primary">Meine Arbeit ansehen</a>
-        <a href="#rechner" class="btn-secondary">Paket berechnen</a>
-      </div>
+      <h1 class="hero-title">Willkommen bei Bourhan.dev</h1>
+      <p class="hero-subtitle">Professionelle digitale Projekte – maßgeschneidert auf Ihre Anforderungen.</p>
     </div>
   </section>
 
-  <!-- PROJEKTE / MEINE ARBEIT -->
-  <section id="projekte" class="section-alt">
+  <!-- MEINE ARBEIT (4 PROJEKTE MIT BILD, DETAIL, LINK) -->
+  <section id="arbeit" class="section-alt">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Meine Arbeit</h2>
-        <p class="section-subtitle">Ein Auszug aus meinen erfolgreich umgesetzten Projekten:</p>
+        <p class="section-subtitle">Ausgewählte Referenzen & individuelle Umsetzungen:</p>
       </div>
 
       <div class="projects-grid">
+        
+        <!-- PROJEKT 1 -->
         <div class="project-card">
-          <div class="project-header-box">Café Rheinblick</div>
+          <div class="project-img-box">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Café Rheinblick">
+          </div>
           <div class="project-body">
             <h3>Café Rheinblick</h3>
-            <p>Digitaler Markenauftritt und System-Struktur für Gastronomie.</p>
+            <p>Moderner Webauftritt & Speisekarten-Integration für die Gastronomie.</p>
+            <a href="#" class="btn-project" onclick="alert('Link zu Café Rheinblick'); return false;">Projekt ansehen &rarr;</a>
           </div>
         </div>
 
+        <!-- PROJEKT 2 -->
         <div class="project-card">
-          <div class="project-header-box">Immobilien</div>
+          <div class="project-img-box">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Immobilien">
+          </div>
           <div class="project-body">
             <h3>Immobilien</h3>
-            <p>Übersichtliche und moderne Präsentation von Objekten & Leistungen.</p>
+            <p>Übersichtliche Objektpräsentation mit direkter Anfrage-Funktion.</p>
+            <a href="#" class="btn-project" onclick="alert('Link zu Immobilien'); return false;">Projekt ansehen &rarr;</a>
           </div>
         </div>
 
+        <!-- PROJEKT 3 -->
         <div class="project-card">
-          <div class="project-header-box">Pulse Fitness</div>
+          <div class="project-img-box">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Pulse Fitness">
+          </div>
           <div class="project-body">
             <h3>Pulse Fitness</h3>
-            <p>Dynamischer Auftritt zur Kundengewinnung im Fitnessbereich.</p>
+            <p>Dynamischer Auftritt zur Neukundengewinnung & Kursübersicht.</p>
+            <a href="#" class="btn-project" onclick="alert('Link zu Pulse Fitness'); return false;">Projekt ansehen &rarr;</a>
           </div>
         </div>
 
+        <!-- PROJEKT 4 -->
         <div class="project-card">
-          <div class="project-header-box">Kickshop</div>
+          <div class="project-img-box">
+            <img src="https://images.unsplash.com/photo-1556742049-0a67568d049f?auto=format&fit=crop&w=600&q=80" alt="Kickshop">
+          </div>
           <div class="project-body">
             <h3>Kickshop</h3>
-            <p>Strukturierte E-Commerce & Produkt-Präsentation.</p>
+            <p>Strukturierte E-Commerce Plattform für Sport & Sneakers.</p>
+            <a href="#" class="btn-project" onclick="alert('Link zu Kickshop'); return false;">Projekt ansehen &rarr;</a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SYSTEM- & PREISRECHNER -->
-  <section id="rechner">
+  <!-- ERKLÄRUNG SÄULEN / PROPORTIONEN (EIGENER ABSCHNITT, NICHT STÖREND AUF HOMEPAGE) -->
+  <section id="proportionen-info">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">System- & Preisrechner</h2>
-        <p class="section-subtitle">Klicke einfach die gewünschten Bausteine an, um deinen Gesamtpreis direkt zu berechnen.</p>
+        <h2 class="section-title">Die 6 Proportionen & Die Basis</h2>
+        <p class="section-subtitle">Unser modulares System für Ihren Erfolg:</p>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto; background: var(--bg-alt); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color);">
+        <p style="margin-bottom: 12px;"><strong>Die Basis (350 €):</strong> Das Grundfundament für jedes Projekt. Beinhaltet die Grundstruktur, Setup und die Abstimmung aller Ziele.</p>
+        <p><strong>Die 6 Proportionen:</strong> Zusätzliche Bausteine (wie Analyse, Konzept, Haupt-Umsetzung, Feinabstimmung, Launch und Nachbetreuung), die flexibel je nach Bedarf hinzugefügt werden können.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERAKTIVER RECHNER -->
+  <section id="rechner" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Projekt-Rechner</h2>
+        <p class="section-subtitle">Klicken Sie auf die gewünschten Module, um Ihren Preis zu berechnen:</p>
       </div>
 
       <div class="calc-wrapper">
@@ -203,56 +224,56 @@
           <div class="calc-item fixed">
             <div class="calc-left">
               <input type="checkbox" checked disabled>
-              <span>Die Basis (Fundament & Setup)</span>
+              <span>Die Basis (Fundament & Grund-Setup)</span>
             </div>
             <div class="calc-price">350 €</div>
           </div>
 
-          <!-- DIE 6 ZUSÄTZLICHEN BAUSTEINE -->
-          <div class="calc-item" onclick="toggleCheck('m1')">
+          <!-- DIE 6 PROPORTIONEN -->
+          <div class="calc-item" onclick="handleRowClick('p1')">
             <div class="calc-left">
-              <input type="checkbox" id="m1" value="150" onchange="updateTotal()">
-              <span>Baustein 1: Analyse & Vorkonzept</span>
+              <input type="checkbox" id="p1" value="150" onclick="event.stopPropagation(); recalculate();">
+              <span>Proportion 1: Analyse & Vorkonzept</span>
             </div>
             <div class="calc-price">+ 150 €</div>
           </div>
 
-          <div class="calc-item" onclick="toggleCheck('m2')">
+          <div class="calc-item" onclick="handleRowClick('p2')">
             <div class="calc-left">
-              <input type="checkbox" id="m2" value="200" onchange="updateTotal()">
-              <span>Baustein 2: Struktur & Architektur</span>
+              <input type="checkbox" id="p2" value="200" onclick="event.stopPropagation(); recalculate();">
+              <span>Proportion 2: Struktur & Design-Konzept</span>
             </div>
             <div class="calc-price">+ 200 €</div>
           </div>
 
-          <div class="calc-item" onclick="toggleCheck('m3')">
+          <div class="calc-item" onclick="handleRowClick('p3')">
             <div class="calc-left">
-              <input type="checkbox" id="m3" value="300" onchange="updateTotal()">
-              <span>Baustein 3: Haupt-Umsetzung & Design</span>
+              <input type="checkbox" id="p3" value="300" onclick="event.stopPropagation(); recalculate();">
+              <span>Proportion 3: Haupt-Umsetzung</span>
             </div>
             <div class="calc-price">+ 300 €</div>
           </div>
 
-          <div class="calc-item" onclick="toggleCheck('m4')">
+          <div class="calc-item" onclick="handleRowClick('p4')">
             <div class="calc-left">
-              <input type="checkbox" id="m4" value="150" onchange="updateTotal()">
-              <span>Baustein 4: Feinabstimmung & Tests</span>
+              <input type="checkbox" id="p4" value="150" onclick="event.stopPropagation(); recalculate();">
+              <span>Proportion 4: Feinabstimmung & Qualitäts-Check</span>
             </div>
             <div class="calc-price">+ 150 €</div>
           </div>
 
-          <div class="calc-item" onclick="toggleCheck('m5')">
+          <div class="calc-item" onclick="handleRowClick('p5')">
             <div class="calc-left">
-              <input type="checkbox" id="m5" value="100" onchange="updateTotal()">
-              <span>Baustein 5: Veröffentlichung & Go-Live</span>
+              <input type="checkbox" id="p5" value="100" onclick="event.stopPropagation(); recalculate();">
+              <span>Proportion 5: Veröffentlichung & Go-Live</span>
             </div>
             <div class="calc-price">+ 100 €</div>
           </div>
 
-          <div class="calc-item" onclick="toggleCheck('m6')">
+          <div class="calc-item" onclick="handleRowClick('p6')">
             <div class="calc-left">
-              <input type="checkbox" id="m6" value="150" onchange="updateTotal()">
-              <span>Baustein 6: Nachbetreuung & Pflege</span>
+              <input type="checkbox" id="p6" value="150" onclick="event.stopPropagation(); recalculate();">
+              <span>Proportion 6: Nachbetreuung & Pflege</span>
             </div>
             <div class="calc-price">+ 150 €</div>
           </div>
@@ -261,69 +282,39 @@
 
         <!-- GESAMTPREIS -->
         <div class="calc-total-box">
-          <div class="calc-total-title">Berechneter Gesamtpreis:</div>
+          <div>
+            <div style="font-size: 14px; opacity: 0.9;">Geschätzter Gesamtpreis:</div>
+            <div style="font-size: 18px; font-weight: 700;">Basis + Ausgewählte Proportionen</div>
+          </div>
           <div class="calc-total-amount" id="totalPrice">350 €</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ERKLÄRUNG DES SYSTEM-AUFBAUS -->
-  <section id="system" class="section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Wie setzt sich das System zusammen?</h2>
-        <p class="section-subtitle">Hier ist der genaue Inhalt aller 7 Elemente aufgeführt:</p>
-      </div>
-
-      <div class="system-grid">
-        <div class="system-card" style="border-color: var(--navy);">
-          <h4>Die Basis (350 €)</h4>
-          <p>Das unumstößliche Fundament. Enthält die grundlegende Einrichtung, Zieldefinition und Absprache aller Rahmenbedingungen.</p>
-        </div>
-        <div class="system-card">
-          <h4>1. Analyse & Vorkonzept</h4>
-          <p>Untersuchung des Ist-Zustands zur genauen Vermeidung von Fehlern vor Projektbeginn.</p>
-        </div>
-        <div class="system-card">
-          <h4>2. Struktur & Architektur</h4>
-          <p>Erstellung eines sauberen Bauplans für die optimale Logik deines Auftritts.</p>
-        </div>
-        <div class="system-card">
-          <h4>3. Haupt-Umsetzung</h4>
-          <p>Die eigentliche Bau- und Erstellungsphase der gewünschten Lösungen.</p>
-        </div>
-        <div class="system-card">
-          <h4>4. Feinabstimmung</h4>
-          <p>Qualitätsprüfung aller Details für ein stimmiges Endergebnis.</p>
-        </div>
-        <div class="system-card">
-          <h4>5. Veröffentlichung</h4>
-          <p>Sichere und reibungslose Bereitstellung deines fertigen Projekts.</p>
-        </div>
-        <div class="system-card">
-          <h4>6. Nachbetreuung</h4>
-          <p>Langfristige Absicherung und fortlaufende Hilfe im laufenden Betrieb.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
+  <!-- KONTAKTFORMULAR -->
   <section id="kontakt">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Direkt Nachricht senden</h2>
-        <p class="section-subtitle">Sende eine Anfrage bezüglich deines berechneten Pakets oder Fragen.</p>
+        <p class="section-subtitle">Senden Sie uns eine Anfrage – wir antworten umgehend.</p>
       </div>
 
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Deine Nachricht wurde gesendet.');">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Ihre Nachricht wurde gesendet.');">
         <div class="form-group">
-          <label>Dein Name</label>
-          <input type="text" placeholder="Name eingeben" required>
+          <label>Name</label>
+          <input type="text" placeholder="Dein Name" required>
         </div>
         <div class="form-group">
-          <label>Deine Nachricht</label>
+          <label>E-Mail-Adresse</label>
+          <input type="email" placeholder="deine@email.de" required>
+        </div>
+        <div class="form-group">
+          <label>Telefonnummer</label>
+          <input type="tel" placeholder="+49 123 4567890">
+        </div>
+        <div class="form-group">
+          <label>Nachricht</label>
           <textarea rows="4" placeholder="Beschreibe dein Anliegen..." required></textarea>
         </div>
         <button type="submit" class="btn-submit">Nachricht Absenden</button>
@@ -331,14 +322,14 @@
     </div>
   </section>
 
-  <!-- FOOTER (DUNKELBLAU, INSTAGRAM, OEFFNUNGSZEITEN, KONTAKT) -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-content">
         
         <div class="footer-brand">
           <h2>Bourhan.dev</h2>
-          <p>Individuelle Lösungen & Projekte</p>
+          <p>Web- & Systemlösungen</p>
         </div>
 
         <div class="footer-info">
@@ -350,7 +341,6 @@
         <div class="footer-info">
           <h4>Kontakt & Social</h4>
           <p><a href="#kontakt">Zum Kontaktformular</a></p>
-          <!-- Instagram Icon & Button -->
           <a href="https://instagram.com" target="_blank" class="insta-link">
             <svg class="insta-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             Instagram Profil
@@ -365,19 +355,19 @@
     </div>
   </footer>
 
-  <!-- SKRIPT FÜR AUTOMATISCHE BERECHNUNG -->
+  <!-- SCRIPT FÜR RECHNER-FUNKTIONALITÄT -->
   <script>
-    function toggleCheck(id) {
+    function handleRowClick(id) {
       const checkbox = document.getElementById(id);
       checkbox.checked = !checkbox.checked;
-      updateTotal();
+      recalculate();
     }
 
-    function updateTotal() {
-      let total = 350; // Basispreis
-      const checkboxes = document.querySelectorAll('.calc-list input[type="checkbox"]:not([disabled])');
+    function recalculate() {
+      let total = 350; // Basis
+      const boxes = document.querySelectorAll('.calc-list input[type="checkbox"]:not([disabled])');
       
-      checkboxes.forEach(cb => {
+      boxes.forEach(cb => {
         if (cb.checked) {
           total += parseInt(cb.value);
         }
