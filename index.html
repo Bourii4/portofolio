@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bourhan.dev | Die Basis & 6 Proportionen</title>
+  <title>Bourhan.dev | Portfolio & System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #ffffff;
       --bg-alt: #f8fafc;
       --text-main: #0f172a;
       --text-muted: #475569;
-      --accent: #1e40af; /* Starkes Dunkelblau */
-      --accent-light: #3b82f6;
+      --navy: #0f2a4a;         /* Edles Dunkelblau */
+      --navy-light: #1e40af;
       --border-color: #e2e8f0;
       --card-bg: #ffffff;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
       --radius: 12px;
     }
 
@@ -32,97 +31,101 @@
       line-height: 1.6;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
-    /* HEADER & MENÜ */
+    /* HEADER */
     header {
       position: sticky; top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      padding: 16px 0;
+      padding: 18px 0;
     }
     .nav-container { display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { font-size: 24px; font-weight: 800; color: var(--accent); text-decoration: none; }
-    .nav-logo span { color: var(--accent-light); }
-    .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
+    .nav-logo { font-size: 26px; font-weight: 800; color: var(--navy); text-decoration: none; }
+    .nav-logo span { color: var(--navy-light); }
+    .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 15px; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .btn-nav { background: var(--accent); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 600 !important; }
+    .nav-links a:hover { color: var(--navy); }
+    .btn-nav { background: var(--navy); color: #fff !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; }
+
+    /* HERO */
+    .hero { padding: 90px 0 70px 0; text-align: center; }
+    .hero-title { font-size: 46px; font-weight: 800; color: var(--navy); max-width: 850px; margin: 0 auto 20px auto; line-height: 1.2; }
+    .hero-subtitle { font-size: 18px; color: var(--text-muted); max-width: 650px; margin: 0 auto 32px auto; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; }
+    .btn-primary { background: var(--navy); color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+    .btn-secondary { background: #fff; color: var(--navy); border: 1px solid var(--border-color); padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; }
 
     /* SECTIONS */
     section { padding: 80px 0; }
     .section-alt { background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-    .section-header { text-align: center; max-width: 750px; margin: 0 auto 50px auto; }
-    .section-badge { display: inline-block; background: #dbeafe; color: var(--accent); font-size: 13px; font-weight: 700; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
-    .section-title { font-size: 36px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; }
-    .section-subtitle { font-size: 18px; color: var(--text-muted); }
-
-    /* HERO */
-    .hero { padding: 100px 0 80px 0; text-align: center; }
-    .hero-title { font-size: 48px; font-weight: 800; line-height: 1.2; color: var(--text-main); max-width: 900px; margin: 0 auto 24px auto; }
-    .hero-title span { color: var(--accent); }
-    .hero-description { font-size: 19px; color: var(--text-muted); max-width: 700px; margin: 0 auto 36px auto; }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; }
-    .btn-primary { background: var(--accent); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; box-shadow: var(--shadow-md); }
-    .btn-secondary { background: #fff; color: var(--text-main); border: 1px solid var(--border-color); padding: 14px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; }
-
-    /* DIE BASIS */
-    .basis-box { background: var(--card-bg); border: 2px solid var(--accent); border-radius: var(--radius); padding: 40px; text-align: left; max-width: 850px; margin: 0 auto; box-shadow: var(--shadow-md); }
-    .basis-box h3 { font-size: 26px; margin-bottom: 16px; color: var(--accent); }
-
-    /* GRIDS */
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm); }
-    .card-num { font-size: 14px; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
-    .card h3 { font-size: 20px; margin-bottom: 12px; }
-    .card-example { font-size: 14px; background: var(--bg-alt); padding: 10px 14px; border-radius: 6px; margin-top: 14px; border-left: 3px solid var(--accent); }
-
-    /* RECHNER */
-    .calc-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 40px; max-width: 750px; margin: 0 auto; box-shadow: var(--shadow-md); }
-    .calc-input { display: flex; gap: 16px; margin-bottom: 24px; }
-    .calc-input input { flex: 1; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 16px; }
-    .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .calc-item { background: var(--bg-alt); padding: 12px 16px; border-radius: 8px; font-weight: 600; display: flex; justify-content: space-between; }
-    .calc-item span { color: var(--accent); font-weight: 700; }
+    .section-header { text-align: center; max-width: 700px; margin: 0 auto 48px auto; }
+    .section-title { font-size: 34px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+    .section-subtitle { font-size: 17px; color: var(--text-muted); }
 
     /* PROJEKTE */
-    .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .project-img { height: 160px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); font-size: 20px; }
-    .project-body { padding: 24px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .project-header-box { height: 160px; background: linear-gradient(135deg, #1e40af, #0f2a4a); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; padding: 16px; text-align: center; }
+    .project-body { padding: 20px; }
+    .project-body p { color: var(--text-muted); font-size: 14px; margin-top: 6px; }
 
-    /* KONTAKTFORMULAR */
-    .contact-form { max-width: 600px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md); }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 15px; }
-    .btn-submit { width: 100%; background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; }
+    /* RECHNER / PREIS-KASTEN */
+    .calc-wrapper { background: #fff; border: 2px solid var(--navy); border-radius: var(--radius); padding: 36px; max-width: 780px; margin: 0 auto; box-shadow: var(--shadow-md); }
+    .calc-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+    .calc-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-alt); cursor: pointer; transition: background 0.2s; }
+    .calc-item:hover { background: #f1f5f9; }
+    .calc-item.fixed { background: #eff6ff; border-color: #bfdbfe; cursor: default; }
+    .calc-left { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; }
+    .calc-left input { width: 18px; height: 18px; accent-color: var(--navy); cursor: pointer; }
+    .calc-price { font-weight: 700; color: var(--navy); }
+    
+    .calc-total-box { background: var(--navy); color: #fff; padding: 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .calc-total-title { font-size: 18px; font-weight: 600; }
+    .calc-total-amount { font-size: 32px; font-weight: 800; }
 
-    /* FOOTER (STARKES DUNKELBLAU MIT WEISS) */
-    footer { background: var(--accent); color: #ffffff; padding: 60px 0 30px 0; }
+    /* SYSTEM ERKLÄRUNG */
+    .system-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .system-card { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px; }
+    .system-card h4 { font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+
+    /* KONTAKT */
+    .contact-form { max-width: 580px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); padding: 36px; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 15px; }
+    .btn-submit { width: 100%; background: var(--navy); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; }
+
+    /* FOOTER (DUNKELBLAU MIT WEISS) */
+    footer { background: var(--navy); color: #ffffff; padding: 50px 0 25px 0; }
     .footer-content { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
-    .footer-brand h2 { color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-    .footer-info h4 { font-size: 18px; margin-bottom: 12px; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 4px; display: inline-block; }
-    .footer-info p { margin-bottom: 6px; opacity: 0.95; }
-    .footer-links a { color: #ffffff; text-decoration: underline; font-weight: 600; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 40px; padding-top: 20px; text-align: center; font-size: 14px; opacity: 0.8; }
+    .footer-brand h2 { color: #ffffff; font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+    .footer-brand p { opacity: 0.8; font-size: 14px; }
+    .footer-info h4 { font-size: 16px; margin-bottom: 10px; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 4px; display: inline-block; }
+    .footer-info p { margin-bottom: 6px; opacity: 0.9; font-size: 15px; }
+    .footer-info a { color: #ffffff; text-decoration: underline; font-weight: 500; }
+    
+    .insta-link { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); color: #fff !important; text-decoration: none !important; padding: 8px 14px; border-radius: 6px; margin-top: 6px; font-size: 14px; transition: background 0.2s; }
+    .insta-link:hover { background: rgba(255,255,255,0.25); }
+    .insta-icon { width: 18px; height: 18px; fill: currentColor; }
+
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); margin-top: 36px; padding-top: 20px; text-align: center; font-size: 13px; opacity: 0.7; }
   </style>
 </head>
 <body>
 
-  <!-- MENÜ -->
+  <!-- HEADER / MENÜ -->
   <header>
     <div class="container">
       <div class="nav-container">
         <a href="#" class="nav-logo">Bourhan<span>.dev</span></a>
         <ul class="nav-links">
-          <li><a href="#basis">Die Basis</a></li>
-          <li><a href="#proportionen">6 Proportionen</a></li>
-          <li><a href="#rechner">Projekt-Rechner</a></li>
-          <li><a href="#projekte">Projekte</a></li>
-          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#projekte">Meine Arbeit</a></li>
+          <li><a href="#rechner">Rechner</a></li>
+          <li><a href="#system">Das System</a></li>
           <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
         </ul>
       </div>
@@ -132,183 +135,175 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="section-badge">Systematische Entwicklung & Struktur</div>
-      <h1 class="hero-title">Klarheit durch <span>Die Basis & 6 Proportionen</span>.</h1>
-      <p class="hero-description">Wir bringen Struktur in dein Projekt. Aufgebaut auf ein festes Fundament berechnen und gestalten wir alle Phasen nach deinem individuellen Maß.</p>
+      <h1 class="hero-title">Professionelle Umsetzung nach maßgeschneidertem System</h1>
+      <p class="hero-subtitle">Wähle die passende Basis und stelle dein Paket individuell zusammen.</p>
       <div class="hero-buttons">
-        <a href="#rechner" class="btn-primary">Projekt berechnen</a>
-        <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
+        <a href="#projekte" class="btn-primary">Meine Arbeit ansehen</a>
+        <a href="#rechner" class="btn-secondary">Paket berechnen</a>
       </div>
     </div>
   </section>
 
-  <!-- DIE BASIS -->
-  <section id="basis" class="section-alt">
+  <!-- PROJEKTE / MEINE ARBEIT -->
+  <section id="projekte" class="section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Das Fundament</span>
-        <h2 class="section-title">Was bedeutet „Die Basis“?</h2>
-        <p class="section-subtitle">Ohne klares Fundament bricht jedes System zusammen.</p>
+        <h2 class="section-title">Meine Arbeit</h2>
+        <p class="section-subtitle">Ein Auszug aus meinen erfolgreich umgesetzten Projekten:</p>
       </div>
 
-      <div class="basis-box">
-        <h3>Das Fundament deines Projekts</h3>
-        <p>Die <strong>Basis</strong> ist das zentrale Ziel deines Vorhabens. Bevor wir in die Details gehen, legen wir fest, was genau erreicht werden soll und worauf alles aufbaut (z. B. Budget, Aufwand oder Kernfunktion).</p>
-        <p style="margin-top: 12px;"><strong>Verständlich erklärt:</strong> Wir definieren zuerst deine Kernanforderungen, damit die 6 nachfolgenden Proportionen exakt und ohne Zeitverschwendung darauf aufgebaut werden können.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIE 6 PROPORTIONEN -->
-  <section id="proportionen">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Die 6 Säulen</span>
-        <h2 class="section-title">Die 6 Proportionen im Überblick</h2>
-        <p class="section-subtitle">Jedes Projekt wird in 6 exakt gewichtete Bereiche aufgeteilt:</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-num">Proportion 1 (10%)</div>
-          <h3>Analyse & Zielsetzung</h3>
-          <p>Gründliche Bestandsaufnahme und Vorbereitung vor dem eigentlichen Start.</p>
-          <div class="card-example"><strong>Ziel:</strong> Exakte Vorbereitung ohne Fehler.</div>
-        </div>
-
-        <div class="card">
-          <div class="card-num">Proportion 2 (15%)</div>
-          <h3>Konzeption & Architektur</h3>
-          <p>Erstellung des konkreten Bauplans und Aufteilung der Aufgaben.</p>
-          <div class="card-example"><strong>Ziel:</strong> Stabile Struktur für die Umsetzung.</div>
-        </div>
-
-        <div class="card">
-          <div class="card-num">Proportion 3 (25%)</div>
-          <h3>Haupt-Umsetzung</h3>
-          <p>Der Kernteil der Arbeit: Programmierung, Design oder Systemaufbau.</p>
-          <div class="card-example"><strong>Ziel:</strong> Das Projekt funktionsfähig machen.</div>
-        </div>
-
-        <div class="card">
-          <div class="card-num">Proportion 4 (20%)</div>
-          <h3>Feinabstimmung & Test</h3>
-          <p>Prüfung aller Funktionen, Optimierung und Qualitätskontrolle.</p>
-          <div class="card-example"><strong>Ziel:</strong> Fehlerfreies Zusammenspiel.</div>
-        </div>
-
-        <div class="card">
-          <div class="card-num">Proportion 5 (15%)</div>
-          <h3>Launch & Deployment</h3>
-          <p>Der finale Veröffentlichungsprozess und die Übergabe.</p>
-          <div class="card-example"><strong>Ziel:</strong> Erfolgreicher Start am Markt.</div>
-        </div>
-
-        <div class="card">
-          <div class="card-num">Proportion 6 (15%)</div>
-          <h3>Wartung & Betreuung</h3>
-          <p>Langfristige Sicherung der Ergebnisse und fortlaufende Pflege.</p>
-          <div class="card-example"><strong>Ziel:</strong> Dauerhafte Stabilität.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROPORTIONEN-RECHNER -->
-  <section id="rechner" class="section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Projekt-Rechner</span>
-        <h2 class="section-title">Projekt-Aufwand berechnen</h2>
-        <p class="section-subtitle">Gib den Gesamtwert deiner Basis (z. B. Budget in € oder Aufwand in Stunden) ein:</p>
-      </div>
-
-      <div class="calc-box">
-        <div class="calc-input">
-          <input type="number" id="basisInput" placeholder="Basiswert eingeben (z.B. 5000)" value="5000" oninput="calculateProportions()">
-          <button class="btn-primary" onclick="calculateProportions()">Berechnen</button>
-        </div>
-
-        <div class="calc-results">
-          <div class="calc-item">Prop. 1 (Analyse 10%): <span id="p1">500</span></div>
-          <div class="calc-item">Prop. 2 (Konzept 15%): <span id="p2">750</span></div>
-          <div class="calc-item">Prop. 3 (Umsetzung 25%): <span id="p3">1.250</span></div>
-          <div class="calc-item">Prop. 4 (Feinabstimmung 20%): <span id="p4">1.000</span></div>
-          <div class="calc-item">Prop. 5 (Launch 15%): <span id="p5">750</span></div>
-          <div class="calc-item">Prop. 6 (Wartung 15%): <span id="p6">750</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIE 4 PROJEKTE -->
-  <section id="projekte">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Referenzen</span>
-        <h2 class="section-title">Unsere 4 Hauptprojekte</h2>
-        <p class="section-subtitle">Erfolgreich umgesetzte Projekte nach dem 7-Säulen-System.</p>
-      </div>
-
-      <div class="grid-2">
+      <div class="projects-grid">
         <div class="project-card">
-          <div class="project-img">PROJEKT 01</div>
+          <div class="project-header-box">Café Rheinblick</div>
           <div class="project-body">
-            <h3>Projekt 1: Web-Plattform</h3>
-            <p>Aufbau einer modernen Web-Anwendung mit klarer Strukturierung nach den 6 Proportionen.</p>
+            <h3>Café Rheinblick</h3>
+            <p>Digitaler Markenauftritt und System-Struktur für Gastronomie.</p>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-img">PROJEKT 02</div>
+          <div class="project-header-box">Immobilien</div>
           <div class="project-body">
-            <h3>Projekt 2: Marken-Auftritt</h3>
-            <p>Ganzheitliche Entwicklung einer digitalen Identität von der Basis bis zur Integration.</p>
+            <h3>Immobilien</h3>
+            <p>Übersichtliche und moderne Präsentation von Objekten & Leistungen.</p>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-img">PROJEKT 03</div>
+          <div class="project-header-box">Pulse Fitness</div>
           <div class="project-body">
-            <h3>Projekt 3: System-Skalierung</h3>
-            <p>Optimierung bestehender Code-Strukturen für maximale Leistung und Skalierbarkeit.</p>
+            <h3>Pulse Fitness</h3>
+            <p>Dynamischer Auftritt zur Kundengewinnung im Fitnessbereich.</p>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-img">PROJEKT 04</div>
+          <div class="project-header-box">Kickshop</div>
           <div class="project-body">
-            <h3>Projekt 4: Prozess-Automation</h3>
-            <p>Automatische Abläufe zur Einsparung von Zeit und Arbeitsaufwand in der Umsetzung.</p>
+            <h3>Kickshop</h3>
+            <p>Strukturierte E-Commerce & Produkt-Präsentation.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MEINE LEISTUNGEN -->
-  <section id="leistungen" class="section-alt">
+  <!-- SYSTEM- & PREISRECHNER -->
+  <section id="rechner">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Angebote</span>
-        <h2 class="section-title">Meine Leistungen</h2>
-        <p class="section-subtitle">Verständlich auf den Punkt gebracht:</p>
+        <h2 class="section-title">System- & Preisrechner</h2>
+        <p class="section-subtitle">Klicke einfach die gewünschten Bausteine an, um deinen Gesamtpreis direkt zu berechnen.</p>
       </div>
 
-      <div class="grid-3">
-        <div class="card">
-          <h3>1. Basis-Analyse</h3>
-          <p>Wir prüfen deine bestehende Lösung und definieren die wesentlichen Grundlagen neu.</p>
+      <div class="calc-wrapper">
+        <div class="calc-list">
+          
+          <!-- FESTE BASIS -->
+          <div class="calc-item fixed">
+            <div class="calc-left">
+              <input type="checkbox" checked disabled>
+              <span>Die Basis (Fundament & Setup)</span>
+            </div>
+            <div class="calc-price">350 €</div>
+          </div>
+
+          <!-- DIE 6 ZUSÄTZLICHEN BAUSTEINE -->
+          <div class="calc-item" onclick="toggleCheck('m1')">
+            <div class="calc-left">
+              <input type="checkbox" id="m1" value="150" onchange="updateTotal()">
+              <span>Baustein 1: Analyse & Vorkonzept</span>
+            </div>
+            <div class="calc-price">+ 150 €</div>
+          </div>
+
+          <div class="calc-item" onclick="toggleCheck('m2')">
+            <div class="calc-left">
+              <input type="checkbox" id="m2" value="200" onchange="updateTotal()">
+              <span>Baustein 2: Struktur & Architektur</span>
+            </div>
+            <div class="calc-price">+ 200 €</div>
+          </div>
+
+          <div class="calc-item" onclick="toggleCheck('m3')">
+            <div class="calc-left">
+              <input type="checkbox" id="m3" value="300" onchange="updateTotal()">
+              <span>Baustein 3: Haupt-Umsetzung & Design</span>
+            </div>
+            <div class="calc-price">+ 300 €</div>
+          </div>
+
+          <div class="calc-item" onclick="toggleCheck('m4')">
+            <div class="calc-left">
+              <input type="checkbox" id="m4" value="150" onchange="updateTotal()">
+              <span>Baustein 4: Feinabstimmung & Tests</span>
+            </div>
+            <div class="calc-price">+ 150 €</div>
+          </div>
+
+          <div class="calc-item" onclick="toggleCheck('m5')">
+            <div class="calc-left">
+              <input type="checkbox" id="m5" value="100" onchange="updateTotal()">
+              <span>Baustein 5: Veröffentlichung & Go-Live</span>
+            </div>
+            <div class="calc-price">+ 100 €</div>
+          </div>
+
+          <div class="calc-item" onclick="toggleCheck('m6')">
+            <div class="calc-left">
+              <input type="checkbox" id="m6" value="150" onchange="updateTotal()">
+              <span>Baustein 6: Nachbetreuung & Pflege</span>
+            </div>
+            <div class="calc-price">+ 150 €</div>
+          </div>
+
         </div>
 
-        <div class="card">
-          <h3>2. Gezielte Proportionen</h3>
-          <p>Du benötigst Unterstützung bei einer konkreten Phase (z. B. Umsetzung oder Tests)? Wir übernehmen genau diesen Teil.</p>
+        <!-- GESAMTPREIS -->
+        <div class="calc-total-box">
+          <div class="calc-total-title">Berechneter Gesamtpreis:</div>
+          <div class="calc-total-amount" id="totalPrice">350 €</div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="card">
-          <h3>3. Komplettumsetzung</h3>
-          <p>Begleitung von der ersten Idee (Basis) über alle 6 Proportionen bis zum fertigen Endprodukt.</p>
+  <!-- ERKLÄRUNG DES SYSTEM-AUFBAUS -->
+  <section id="system" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Wie setzt sich das System zusammen?</h2>
+        <p class="section-subtitle">Hier ist der genaue Inhalt aller 7 Elemente aufgeführt:</p>
+      </div>
+
+      <div class="system-grid">
+        <div class="system-card" style="border-color: var(--navy);">
+          <h4>Die Basis (350 €)</h4>
+          <p>Das unumstößliche Fundament. Enthält die grundlegende Einrichtung, Zieldefinition und Absprache aller Rahmenbedingungen.</p>
+        </div>
+        <div class="system-card">
+          <h4>1. Analyse & Vorkonzept</h4>
+          <p>Untersuchung des Ist-Zustands zur genauen Vermeidung von Fehlern vor Projektbeginn.</p>
+        </div>
+        <div class="system-card">
+          <h4>2. Struktur & Architektur</h4>
+          <p>Erstellung eines sauberen Bauplans für die optimale Logik deines Auftritts.</p>
+        </div>
+        <div class="system-card">
+          <h4>3. Haupt-Umsetzung</h4>
+          <p>Die eigentliche Bau- und Erstellungsphase der gewünschten Lösungen.</p>
+        </div>
+        <div class="system-card">
+          <h4>4. Feinabstimmung</h4>
+          <p>Qualitätsprüfung aller Details für ein stimmiges Endergebnis.</p>
+        </div>
+        <div class="system-card">
+          <h4>5. Veröffentlichung</h4>
+          <p>Sichere und reibungslose Bereitstellung deines fertigen Projekts.</p>
+        </div>
+        <div class="system-card">
+          <h4>6. Nachbetreuung</h4>
+          <p>Langfristige Absicherung und fortlaufende Hilfe im laufenden Betrieb.</p>
         </div>
       </div>
     </div>
@@ -318,50 +313,32 @@
   <section id="kontakt">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Kontaktformular</span>
-        <h2 class="section-title">Kontakt aufnehmen</h2>
-        <p class="section-subtitle">Schreib mir eine Nachricht für deine Anfrage.</p>
+        <h2 class="section-title">Direkt Nachricht senden</h2>
+        <p class="section-subtitle">Sende eine Anfrage bezüglich deines berechneten Pakets oder Fragen.</p>
       </div>
 
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Ihre Anfrage wurde an Bourhan.dev übermittelt.');">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Deine Nachricht wurde gesendet.');">
         <div class="form-group">
-          <label>Name</label>
-          <input type="text" placeholder="Dein Name" required>
+          <label>Dein Name</label>
+          <input type="text" placeholder="Name eingeben" required>
         </div>
         <div class="form-group">
-          <label>E-Mail-Adresse</label>
-          <input type="email" placeholder="deine@email.de" required>
+          <label>Deine Nachricht</label>
+          <textarea rows="4" placeholder="Beschreibe dein Anliegen..." required></textarea>
         </div>
-        <div class="form-group">
-          <label>Leistung wählen</label>
-          <select>
-            <option>Basis-Analyse</option>
-            <option>Gezielte Proportionen</option>
-            <option>Komplettumsetzung</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Nachricht</label>
-          <textarea rows="4" placeholder="Deine Nachricht an Bourhan.dev..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Nachricht absenden</button>
+        <button type="submit" class="btn-submit">Nachricht Absenden</button>
       </form>
     </div>
   </section>
 
-  <!-- FOOTER (STARKES BLAU, BOURHAN.DEV, OEFFNUNGSZEITEN & KONTAKT) -->
+  <!-- FOOTER (DUNKELBLAU, INSTAGRAM, OEFFNUNGSZEITEN, KONTAKT) -->
   <footer>
     <div class="container">
       <div class="footer-content">
+        
         <div class="footer-brand">
           <h2>Bourhan.dev</h2>
-          <p>Die Basis & 6 Proportionen</p>
-        </div>
-
-        <div class="footer-info">
-          <h4>Kontakt</h4>
-          <p>E-Mail: bourhan.dev@gmail.com</p>
-          <p><a href="#kontakt">Zum Kontaktformular</a></p>
+          <p>Individuelle Lösungen & Projekte</p>
         </div>
 
         <div class="footer-info">
@@ -369,6 +346,17 @@
           <p>Montag bis Sonntag</p>
           <p><strong>14:00 Uhr – 18:00 Uhr</strong></p>
         </div>
+
+        <div class="footer-info">
+          <h4>Kontakt & Social</h4>
+          <p><a href="#kontakt">Zum Kontaktformular</a></p>
+          <!-- Instagram Icon & Button -->
+          <a href="https://instagram.com" target="_blank" class="insta-link">
+            <svg class="insta-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram Profil
+          </a>
+        </div>
+
       </div>
 
       <div class="footer-bottom">
@@ -377,16 +365,25 @@
     </div>
   </footer>
 
-  <!-- SCRIPT FÜR PROJEKT-RECHNER -->
+  <!-- SKRIPT FÜR AUTOMATISCHE BERECHNUNG -->
   <script>
-    function calculateProportions() {
-      const val = parseFloat(document.getElementById('basisInput').value) || 0;
-      document.getElementById('p1').innerText =toLocaleString('de-DE');
-      document.getElementById('p2').innerText =toLocaleString('de-DE');
-      document.getElementById('p3').innerText =.toLocaleString('de-DE');
-      document.getElementById('p4').innerText =toLocaleString('de-DE');
-      document.getElementById('p5').innerText = .toLocaleString('de-DE');
-      document.getElementById('p6').innerText = toLocaleString('de-DE');
+    function toggleCheck(id) {
+      const checkbox = document.getElementById(id);
+      checkbox.checked = !checkbox.checked;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let total = 350; // Basispreis
+      const checkboxes = document.querySelectorAll('.calc-list input[type="checkbox"]:not([disabled])');
+      
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          total += parseInt(cb.value);
+        }
+      });
+
+      document.getElementById('totalPrice').innerText = total + ' €';
     }
   </script>
 
