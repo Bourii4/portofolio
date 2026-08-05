@@ -457,34 +457,54 @@
     <p class="footer-rights">© 2026 Bourhan.dev - Alle Rechte vorbehalten.</p>
   </footer>
 
-  <!-- SCRIPT LOGIK -->
- <script>
-  // Deine Werke direkt im Code
-  const meineWerke = [
-    { titel: 'Immobilien', beschreibung: 'Exclusive landigpage für Luxusimmobilien mit Filter und Live-Hypothekenrechner', link: https://bourii4.github.io/Immobilien-Website ', Bild:https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500'' },
-    { titel: 'Pulse Fitness', beschreibung: 'Dynamische Landingpage für ein Fitnessstudio mit Wochentags-Kursplan und Probetraining-Buchung.', link: https://bourii4.github.io/Immobilien-Website', bild: https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500'' },
-    { titel: 'Cafe Landingpage', beschreibung: 'Landingpage für ein gemütliches Café am Rhein mit Tisch-Reservierung.',  link: https://bourii4.github.io/Immobilien-Website', bild: https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500'' },
-    { titel: 'kickzshop', beschreibung: 'E-Commerce Online Shop im JD-Sports-Style mit dynamischer Produktdatenbank, Live-Filter & interaktivem Warenkorb.', link: https://bourii4.github.io/kickz-shop', bild: https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500'' }
-  ];
+<!-- SCRIPT LOGIK -->
+  <script>
+    // DEINE WERKE
+    const meineWerke = [
+      {
+        titel: 'Immobilien',
+        beschreibung: 'Exclusive Landingpage für Luxusimmobilien mit Filter und Live-Hypothekenrechner.',
+        link: 'https://bourii4.github.io/Immobilien-Website',
+        bild: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500'
+      },
+      {
+        titel: 'Pulse Fitness',
+        beschreibung: 'Dynamische Landingpage für ein Fitnessstudio mit Wochentags-Kursplan und Probetraining-Buchung.',
+        link: 'https://bourii4.github.io/Immobilien-Website', 
+        bild: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500'
+      },
+      {
+        titel: 'Cafe Landingpage',
+        beschreibung: 'Landingpage für ein gemütliches Café am Rhein mit Tisch-Reservierung.',
+        link: 'https://bourii4.github.io/Immobilien-Website',
+        bild: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500'
+      },
+      {
+        titel: 'kickzshop',
+        beschreibung: 'E-Commerce Online Shop im JD-Sports-Style mit dynamischer Produktdatenbank, Live-Filter & interaktivem Warenkorb.',
+        link: 'https://bourii4.github.io/kickz-shop',
+        bild: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500'
+      }
+    ];
 
-  function zeigeWerke() {
-    const container = document.getElementById("Projekt-Container");
-    if (!container) return;
+    function renderWerke() {
+      const container = document.getElementById("Projekt-Container");
+      if (!container) return;
 
-    container.innerHTML = "";
-    meineWerke.forEach(item => {
-      container.innerHTML += `
-        <div class="project-card">
-          <div class="project-img" style="background-image: url('${item.bild}')"></div>
-          <div class="project-info">
-            <h3>${item.titel}</h3>
-            <p>${item.beschreibung}</p>
+      container.innerHTML = "";
+      meineWerke.forEach(item => {
+        container.innerHTML += `
+          <div class="project-card">
+            <div class="project-img" style="background-image: url('${item.bild}')"></div>
+            <div class="project-info">
+              <h3>${item.titel}</h3>
+              <p>${item.beschreibung}</p>
+              <a href="${item.link}" target="_blank" style="display:inline-block; margin-top:10px; color:var(--yellow-accent, #ffc107); text-decoration:none; font-weight:600;">Website ansehen →</a>
+            </div>
           </div>
-        </div>
-      `;
-    });
-  }
-
+        `;
+      });
+    }
   // Preisschätzer
   function calculatePrice() {
     let total = 350;
