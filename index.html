@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buchhandl. | Die Basis & 6 Proportionen</title>
+  <title>Bourhan.dev | Die Basis & 6 Proportionen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,8 +13,8 @@
       --bg-alt: #f8fafc;
       --text-main: #0f172a;
       --text-muted: #475569;
-      --accent: #2563eb; /* Starkes Blau */
-      --accent-dark: #1d4ed8;
+      --accent: #1e40af; /* Starkes Dunkelblau */
+      --accent-light: #3b82f6;
       --border-color: #e2e8f0;
       --card-bg: #ffffff;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -45,6 +45,7 @@
     }
     .nav-container { display: flex; justify-content: space-between; align-items: center; }
     .nav-logo { font-size: 24px; font-weight: 800; color: var(--accent); text-decoration: none; }
+    .nav-logo span { color: var(--accent-light); }
     .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 15px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
@@ -54,7 +55,7 @@
     section { padding: 80px 0; }
     .section-alt { background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
     .section-header { text-align: center; max-width: 750px; margin: 0 auto 50px auto; }
-    .section-badge { display: inline-block; background: #dbeafe; color: var(--accent-dark); font-size: 13px; font-weight: 700; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .section-badge { display: inline-block; background: #dbeafe; color: var(--accent); font-size: 13px; font-weight: 700; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
     .section-title { font-size: 36px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; }
     .section-subtitle { font-size: 18px; color: var(--text-muted); }
 
@@ -80,16 +81,16 @@
     .card-example { font-size: 14px; background: var(--bg-alt); padding: 10px 14px; border-radius: 6px; margin-top: 14px; border-left: 3px solid var(--accent); }
 
     /* RECHNER */
-    .calc-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 40px; max-width: 700px; margin: 0 auto; box-shadow: var(--shadow-md); }
+    .calc-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 40px; max-width: 750px; margin: 0 auto; box-shadow: var(--shadow-md); }
     .calc-input { display: flex; gap: 16px; margin-bottom: 24px; }
     .calc-input input { flex: 1; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 16px; }
     .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .calc-item { background: var(--bg-alt); padding: 12px 16px; border-radius: 8px; font-weight: 600; display: flex; justify-content: space-between; }
-    .calc-item span { color: var(--accent); }
+    .calc-item span { color: var(--accent); font-weight: 700; }
 
     /* PROJEKTE */
     .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .project-img { height: 160px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #475569; }
+    .project-img { height: 160px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); font-size: 20px; }
     .project-body { padding: 24px; }
 
     /* KONTAKTFORMULAR */
@@ -99,7 +100,7 @@
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 15px; }
     .btn-submit { width: 100%; background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; }
 
-    /* FOOTER (STARKES BLAU MIT WEISS) */
+    /* FOOTER (STARKES DUNKELBLAU MIT WEISS) */
     footer { background: var(--accent); color: #ffffff; padding: 60px 0 30px 0; }
     .footer-content { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
     .footer-brand h2 { color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 8px; }
@@ -115,11 +116,11 @@
   <header>
     <div class="container">
       <div class="nav-container">
-        <a href="#" class="nav-logo">Buchhandl.</a>
+        <a href="#" class="nav-logo">Bourhan<span>.dev</span></a>
         <ul class="nav-links">
           <li><a href="#basis">Die Basis</a></li>
           <li><a href="#proportionen">6 Proportionen</a></li>
-          <li><a href="#rechner">Proportion-Rechner</a></li>
+          <li><a href="#rechner">Projekt-Rechner</a></li>
           <li><a href="#projekte">Projekte</a></li>
           <li><a href="#leistungen">Leistungen</a></li>
           <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
@@ -131,12 +132,12 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="section-badge">Systematische Planung & Umsetzung</div>
-      <h1 class="hero-title">Klarheit durch die <span>Basis & 6 Proportionen</span>.</h1>
-      <p class="hero-description">Wir bringen Struktur in dein Projekt. Aufgebaut auf ein festes Fundament berechnen und gestalten wir alle Phasen nach einem genauen System.</p>
+      <div class="section-badge">Systematische Entwicklung & Struktur</div>
+      <h1 class="hero-title">Klarheit durch <span>Die Basis & 6 Proportionen</span>.</h1>
+      <p class="hero-description">Wir bringen Struktur in dein Projekt. Aufgebaut auf ein festes Fundament berechnen und gestalten wir alle Phasen nach deinem individuellen Maß.</p>
       <div class="hero-buttons">
-        <a href="#rechner" class="btn-primary">Proportionen berechnen</a>
-        <a href="#kontakt" class="btn-secondary">Jetzt Anfragen</a>
+        <a href="#rechner" class="btn-primary">Projekt berechnen</a>
+        <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
       </div>
     </div>
   </section>
@@ -152,8 +153,8 @@
 
       <div class="basis-box">
         <h3>Das Fundament deines Projekts</h3>
-        <p>Die <strong>Basis</strong> ist der Startwert und das Hauptziel deines gesamten Vorhabens. Bevor wir in die Details gehen, legen wir fest, was genau erreicht werden soll und worauf alles aufbaut (z.B. Gesamtbudget, Projektumfang oder Kern-Zielgruppe).</p>
-        <p style="margin-top: 12px;"><strong>Konkret heißt das:</strong> Wer seine Basis nicht kennt, verschwendet Ressourcen. Wir definieren zuerst die Bedingungen, damit die 6 nachfolgenden Proportionen exakt darauf ausgerichtet werden können.</p>
+        <p>Die <strong>Basis</strong> ist das zentrale Ziel deines Vorhabens. Bevor wir in die Details gehen, legen wir fest, was genau erreicht werden soll und worauf alles aufbaut (z. B. Budget, Aufwand oder Kernfunktion).</p>
+        <p style="margin-top: 12px;"><strong>Verständlich erklärt:</strong> Wir definieren zuerst deine Kernanforderungen, damit die 6 nachfolgenden Proportionen exakt und ohne Zeitverschwendung darauf aufgebaut werden können.</p>
       </div>
     </div>
   </section>
@@ -163,78 +164,78 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Die 6 Säulen</span>
-        <h2 class="section-title">Die 6 Proportionen einfach erklärt</h2>
-        <p class="section-subtitle">Jedes Vorhaben teilen wir in 6 exakt gewichtete Bereiche ein, damit nichts vergessen wird.</p>
+        <h2 class="section-title">Die 6 Proportionen im Überblick</h2>
+        <p class="section-subtitle">Jedes Projekt wird in 6 exakt gewichtete Bereiche aufgeteilt:</p>
       </div>
 
       <div class="grid-3">
         <div class="card">
           <div class="card-num">Proportion 1 (10%)</div>
-          <h3>Analyse & Ist-Zustand</h3>
-          <p>Gründliche Durchleuchtung aller bestehenden Daten, Probleme und Chancen.</p>
-          <div class="card-example"><strong>Ziel:</strong> Fehlervermeidung vor Beginn der Arbeit.</div>
+          <h3>Analyse & Zielsetzung</h3>
+          <p>Gründliche Bestandsaufnahme und Vorbereitung vor dem eigentlichen Start.</p>
+          <div class="card-example"><strong>Ziel:</strong> Exakte Vorbereitung ohne Fehler.</div>
         </div>
 
         <div class="card">
           <div class="card-num">Proportion 2 (15%)</div>
-          <h3>Konzept & Ausrichtung</h3>
-          <p>Erstellung des konkreten Fahrplans und der mathematischen/strukturellen Verteilung.</p>
-          <div class="card-example"><strong>Ziel:</strong> Ein fertiger Bauplan für die Umsetzung.</div>
+          <h3>Konzeption & Architektur</h3>
+          <p>Erstellung des konkreten Bauplans und Aufteilung der Aufgaben.</p>
+          <div class="card-example"><strong>Ziel:</strong> Stabile Struktur für die Umsetzung.</div>
         </div>
 
         <div class="card">
           <div class="card-num">Proportion 3 (25%)</div>
           <h3>Haupt-Umsetzung</h3>
-          <p>Der größte Teil der Arbeit: Das eigentliche Erstellen, Bauen oder Umsetzen des Projekts.</p>
-          <div class="card-example"><strong>Ziel:</strong> Die Idee greifbar und funktionsfähig machen.</div>
+          <p>Der Kernteil der Arbeit: Programmierung, Design oder Systemaufbau.</p>
+          <div class="card-example"><strong>Ziel:</strong> Das Projekt funktionsfähig machen.</div>
         </div>
 
         <div class="card">
           <div class="card-num">Proportion 4 (20%)</div>
-          <h3>Feinabstimmung</h3>
-          <p>Prüfung aller Details, Anpassung der Schnittstellen und Qualitätskontrolle.</p>
-          <div class="card-example"><strong>Ziel:</strong> Perfektes Zusammenspiel aller Teile.</div>
+          <h3>Feinabstimmung & Test</h3>
+          <p>Prüfung aller Funktionen, Optimierung und Qualitätskontrolle.</p>
+          <div class="card-example"><strong>Ziel:</strong> Fehlerfreies Zusammenspiel.</div>
         </div>
 
         <div class="card">
           <div class="card-num">Proportion 5 (15%)</div>
-          <h3>Veröffentlichung</h3>
-          <p>Der Go-Live-Prozess, die Übergabe oder das Ausrollen am Markt.</p>
-          <div class="card-example"><strong>Ziel:</strong> Das Projekt erfolgreich sichtbar machen.</div>
+          <h3>Launch & Deployment</h3>
+          <p>Der finale Veröffentlichungsprozess und die Übergabe.</p>
+          <div class="card-example"><strong>Ziel:</strong> Erfolgreicher Start am Markt.</div>
         </div>
 
         <div class="card">
           <div class="card-num">Proportion 6 (15%)</div>
-          <h3>Pflege & Betreuung</h3>
-          <p>Nachbetreuung, langfristige Sicherung der Ergebnisse und Weiterentwicklung.</p>
-          <div class="card-example"><strong>Ziel:</strong> Dauerhafte Stabilität gewährleisten.</div>
+          <h3>Wartung & Betreuung</h3>
+          <p>Langfristige Sicherung der Ergebnisse und fortlaufende Pflege.</p>
+          <div class="card-example"><strong>Ziel:</strong> Dauerhafte Stabilität.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROPORTIONEN-RECHNER (HYPOTHESERECHNER) -->
+  <!-- PROPORTIONEN-RECHNER -->
   <section id="rechner" class="section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Interaktives Tool</span>
-        <h2 class="section-title">Proportionen-Rechner</h2>
-        <p class="section-subtitle">Gib deine Basis (z. B. Budget in € oder Aufwand in Stunden) ein, um die Verteilung sofort zu berechnen.</p>
+        <span class="section-badge">Projekt-Rechner</span>
+        <h2 class="section-title">Projekt-Aufwand berechnen</h2>
+        <p class="section-subtitle">Gib den Gesamtwert deiner Basis (z. B. Budget in € oder Aufwand in Stunden) ein:</p>
       </div>
 
       <div class="calc-box">
         <div class="calc-input">
-          <input type="number" id="basisInput" placeholder="Basis eingeben (z.B. 10000)" value="10000" oninput="calculateProportions()">
+          <input type="number" id="basisInput" placeholder="Basiswert eingeben (z.B. 5000)" value="5000" oninput="calculateProportions()">
           <button class="btn-primary" onclick="calculateProportions()">Berechnen</button>
         </div>
 
         <div class="calc-results">
-          <div class="calc-item">Prop. 1 (10%): <span id="p1">1.000</span></div>
-          <div class="calc-item">Prop. 2 (15%): <span id="p2">1.500</span></div>
-          <div class="calc-item">Prop. 3 (25%): <span id="p3">2.500</span></div>
-          <div class="calc-item">Prop. 4 (20%): <span id="p4">2.000</span></div>
-          <div class="calc-item">Prop. 5 (15%): <span id="p5">1.500</span></div>
-          <div class="calc-item">Prop. 6 (15%): <span id="p6">1.500</span></div>
+          <div class="calc-item">Prop. 1 (Analyse 10%): <span id="p1">500</span></div>
+          <div class="calc-item">Prop. 2 (Konzept 15%): <span id="p2">750</span></div>
+          <div class="calc-item">Prop. 3 (Umsetzung 25%): <span id="p3">1.250</span></div>
+          <div class="calc-item">Prop. 4 (Feinabstimmung 20%): <span id="p4">1.000</span></div>
+          <div class="calc-item">Prop. 5 (Launch 15%): <span id="p5">750</span></div>
+          <div class="calc-item">Prop. 6 (Wartung 15%): <span id="p6">750</span></div>
         </div>
       </div>
     </div>
@@ -246,23 +247,23 @@
       <div class="section-header">
         <span class="section-badge">Referenzen</span>
         <h2 class="section-title">Unsere 4 Hauptprojekte</h2>
-        <p class="section-subtitle">Praxisbeispiele, die nach dem System der Basis & 6 Proportionen umgesetzt wurden.</p>
+        <p class="section-subtitle">Erfolgreich umgesetzte Projekte nach dem 7-Säulen-System.</p>
       </div>
 
       <div class="grid-2">
         <div class="project-card">
           <div class="project-img">PROJEKT 01</div>
           <div class="project-body">
-            <h3>Projekt 1: Digitale Restrukturierung</h3>
-            <p>Vollständige Überarbeitung der internen Prozesse nach der 6-Proportionen-Formel zur Effizienzsteigerung.</p>
+            <h3>Projekt 1: Web-Plattform</h3>
+            <p>Aufbau einer modernen Web-Anwendung mit klarer Strukturierung nach den 6 Proportionen.</p>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-img">PROJEKT 02</div>
           <div class="project-body">
-            <h3>Projekt 2: Marken-Entwicklung</h3>
-            <p>Aufbau eines neuen Markenauftritts von der Basis-Analyse bis zur nachhaltigen Markt-Integration.</p>
+            <h3>Projekt 2: Marken-Auftritt</h3>
+            <p>Ganzheitliche Entwicklung einer digitalen Identität von der Basis bis zur Integration.</p>
           </div>
         </div>
 
@@ -270,15 +271,15 @@
           <div class="project-img">PROJEKT 03</div>
           <div class="project-body">
             <h3>Projekt 3: System-Skalierung</h3>
-            <p>Berechnung und Anwendung der verhältnismäßigen Ressourcenverteilung für schnelles Wachstum.</p>
+            <p>Optimierung bestehender Code-Strukturen für maximale Leistung und Skalierbarkeit.</p>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-img">PROJEKT 04</div>
           <div class="project-body">
-            <h3>Projekt 4: Prozess-Optimierung</h3>
-            <p>Punktgenaue Überarbeitung und Feinabstimmung bestehender Abläufe in einem mittelständischen Betrieb.</p>
+            <h3>Projekt 4: Prozess-Automation</h3>
+            <p>Automatische Abläufe zur Einsparung von Zeit und Arbeitsaufwand in der Umsetzung.</p>
           </div>
         </div>
       </div>
@@ -289,28 +290,25 @@
   <section id="leistungen" class="section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Was ich biete</span>
-        <h2 class="section-title">Angebote & Leistungen verständlich erklärt</h2>
-        <p class="section-subtitle">Wie wir konkret zusammenarbeiten können:</p>
+        <span class="section-badge">Angebote</span>
+        <h2 class="section-title">Meine Leistungen</h2>
+        <p class="section-subtitle">Verständlich auf den Punkt gebracht:</p>
       </div>
 
       <div class="grid-3">
         <div class="card">
-          <h3>1. Basis-Beratung</h3>
-          <p>Wir setzen uns zusammen und definieren deine Basis. Du erfährst exakt, wo die Schwachstellen deines aktuellen Systems liegen.</p>
-          <div class="card-example"><strong>Ideal für:</strong> Einsteiger oder neue Projekte.</div>
+          <h3>1. Basis-Analyse</h3>
+          <p>Wir prüfen deine bestehende Lösung und definieren die wesentlichen Grundlagen neu.</p>
         </div>
 
         <div class="card">
-          <h3>2. Einzelne Proportion buchen</h3>
-          <p>Du hast bereits eine Basis, aber dir fehlt z. B. nur die Feinabstimmung (Proportion 4)? Wir übernehmen gezielt diesen Teil.</p>
-          <div class="card-example"><strong>Ideal für:</strong> Gezielte Problemlösung.</div>
+          <h3>2. Gezielte Proportionen</h3>
+          <p>Du benötigst Unterstützung bei einer konkreten Phase (z. B. Umsetzung oder Tests)? Wir übernehmen genau diesen Teil.</p>
         </div>
 
         <div class="card">
-          <h3>3. Komplettabwicklung</h3>
-          <p>Wir übernehmen die Verantwortung für die Basis und alle 6 Proportionen von A bis Z. Du erhältst ein schlüsselfertiges Ergebnis.</p>
-          <div class="card-example"><strong>Ideal für:</strong> Maximale Entlastung & Sicherheit.</div>
+          <h3>3. Komplettumsetzung</h3>
+          <p>Begleitung von der ersten Idee (Basis) über alle 6 Proportionen bis zum fertigen Endprodukt.</p>
         </div>
       </div>
     </div>
@@ -321,11 +319,11 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Kontaktformular</span>
-        <h2 class="section-title">Nimm Kontakt mit uns auf</h2>
-        <p class="section-subtitle">Schreib uns dein Anliegen, wir melden uns umgehend.</p>
+        <h2 class="section-title">Kontakt aufnehmen</h2>
+        <p class="section-subtitle">Schreib mir eine Nachricht für deine Anfrage.</p>
       </div>
 
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht an Buchhandl.!');">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Ihre Anfrage wurde an Bourhan.dev übermittelt.');">
         <div class="form-group">
           <label>Name</label>
           <input type="text" placeholder="Dein Name" required>
@@ -335,35 +333,35 @@
           <input type="email" placeholder="deine@email.de" required>
         </div>
         <div class="form-group">
-          <label>Interesse an</label>
+          <label>Leistung wählen</label>
           <select>
-            <option>Basis-Beratung</option>
-            <option>Einzelne Proportionen</option>
-            <option>Komplettabwicklung</option>
+            <option>Basis-Analyse</option>
+            <option>Gezielte Proportionen</option>
+            <option>Komplettumsetzung</option>
           </select>
         </div>
         <div class="form-group">
           <label>Nachricht</label>
-          <textarea rows="4" placeholder="Wie können wir dir helfen?"></textarea>
+          <textarea rows="4" placeholder="Deine Nachricht an Bourhan.dev..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Nachricht Senden</button>
+        <button type="submit" class="btn-submit">Nachricht absenden</button>
       </form>
     </div>
   </section>
 
-  <!-- FOOTER (STARKES BLAU MIT WEISS, BUCHHANDL., OEFFNUNGSZEITEN & KONTAKT) -->
+  <!-- FOOTER (STARKES BLAU, BOURHAN.DEV, OEFFNUNGSZEITEN & KONTAKT) -->
   <footer>
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <h2>Buchhandl.</h2>
-          <p>Systematische Proportional-Lösungen</p>
+          <h2>Bourhan.dev</h2>
+          <p>Die Basis & 6 Proportionen</p>
         </div>
 
         <div class="footer-info">
           <h4>Kontakt</h4>
-          <p>E-Mail: kontakt@buchhandl.de</p>
-          <p><a href="#kontakt">Direkt zum Kontaktformular</a></p>
+          <p>E-Mail: bourhan.dev@gmail.com</p>
+          <p><a href="#kontakt">Zum Kontaktformular</a></p>
         </div>
 
         <div class="footer-info">
@@ -374,21 +372,21 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Buchhandl. Alle Rechte vorbehalten.</p>
+        <p>&copy; 2026 Bourhan.dev. Alle Rechte vorbehalten.</p>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT FÜR RECHNER -->
+  <!-- SCRIPT FÜR PROJEKT-RECHNER -->
   <script>
     function calculateProportions() {
       const val = parseFloat(document.getElementById('basisInput').value) || 0;
-      document.getElementById('p1').innerText = (val * 0.10).toLocaleString('de-DE');
-      document.getElementById('p2').innerText = (val * 0.15).toLocaleString('de-DE');
-      document.getElementById('p3').innerText = (val * 0.25).toLocaleString('de-DE');
-      document.getElementById('p4').innerText = (val * 0.20).toLocaleString('de-DE');
-      document.getElementById('p5').innerText = (val * 0.15).toLocaleString('de-DE');
-      document.getElementById('p6').innerText = (val * 0.15).toLocaleString('de-DE');
+      document.getElementById('p1').innerText =toLocaleString('de-DE');
+      document.getElementById('p2').innerText =toLocaleString('de-DE');
+      document.getElementById('p3').innerText =.toLocaleString('de-DE');
+      document.getElementById('p4').innerText =toLocaleString('de-DE');
+      document.getElementById('p5').innerText = .toLocaleString('de-DE');
+      document.getElementById('p6').innerText = toLocaleString('de-DE');
     }
   </script>
 
