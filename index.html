@@ -3,528 +3,272 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bourhan.dev | Webentwicklung</title>
-  
+  <title>Bourhan | Die Basis & 6 Proportionen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Supabase JS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #0d1117;
-      --card-bg: #161b22;
-      --border: #30363d;
-      --text-main: #f0f6fc;
-      --text-muted: #8b949e;
-      --yellow-accent: #facc15;
-      --yellow-hover: #eab308;
+      --bg-color: #ffffff;
+      --bg-alt: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    
+
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
     }
 
-    /* NAVBAR (Bourhan links, Menü rechts) */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 5%;
-      background: rgba(13, 17, 23, 0.95);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #ffffff;
-      text-decoration: none;
+    /* HEADER & MENÜ */
+    header {
+      position: sticky; top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 16px 0;
     }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-size: 22px; font-weight: 800; color: var(--text-main); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-main); }
+    .btn-nav { background: var(--text-main); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 600 !important; }
 
-    .logo .yellow {
-      color: var(--yellow-accent);
-    }
+    /* SECTIONS */
+    section { padding: 96px 0; }
+    .section-alt { background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .section-header { text-align: center; max-width: 700px; margin: 0 auto 64px auto; }
+    .section-badge { display: inline-block; background: #fef3c7; color: #92400e; font-size: 13px; font-weight: 700; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .section-title { font-size: 36px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; }
+    .section-subtitle { font-size: 18px; color: var(--text-muted); }
 
-    .nav-links {
-      display: flex;
-      gap: 1.8rem;
-      list-style: none;
-    }
+    /* HERO */
+    .hero { padding: 120px 0 96px 0; text-align: center; }
+    .hero-title { font-size: 52px; font-weight: 800; line-height: 1.15; color: var(--text-main); max-width: 900px; margin: 0 auto 24px auto; }
+    .hero-title span { color: var(--accent); }
+    .hero-description { font-size: 20px; color: var(--text-muted); max-width: 680px; margin: 0 auto 40px auto; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; }
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; box-shadow: var(--shadow-md); }
+    .btn-secondary { background: #fff; color: var(--text-main); border: 1px solid var(--border-color); padding: 14px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; }
 
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
+    /* DIE BASIS */
+    .basis-box { background: var(--card-bg); border: 2px solid var(--accent); border-radius: var(--radius); padding: 40px; text-align: center; max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-md); }
+    .basis-box h3 { font-size: 28px; margin-bottom: 16px; }
 
-    .nav-links a:hover {
-      color: var(--yellow-accent);
-    }
-
-    /* SEKTIONEN STYLING */
-    section {
-      max-width: 1000px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-    }
-
-    .section-title span.yellow {
-      color: var(--yellow-accent);
-    }
-
-    /* WAS ICH BIETE */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 1.8rem;
-      border-radius: 10px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--yellow-accent);
-    }
-
-    .service-card h3 {
-      font-size: 1.2rem;
-      color: var(--text-main);
-      margin-bottom: 0.6rem;
-    }
-
-    .service-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* MEINE WERKE (PROJEKTE FROM SUPABASE) */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-
-    .project-card:hover {
-      border-color: var(--yellow-accent);
-    }
-
-    .project-img {
-      width: 100%;
-      height: 180px;
-      background-size: cover;
-      background-position: center;
-      background-color: #21262d;
-    }
-
-    .project-info {
-      padding: 1.2rem;
-    }
-
-    .project-info h3 {
-      font-size: 1.1rem;
-      color: var(--text-main);
-      margin-bottom: 0.4rem;
-    }
-
-    .project-info p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* PREISSCHÄTZER */
-    .calc-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 10px;
-    }
-
-    .calc-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 1rem;
-      margin-bottom: 0.8rem;
-      background: #0d1117;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .calc-option label {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      cursor: pointer;
-      width: 100%;
-      font-size: 0.95rem;
-    }
-
-    .calc-option input[type="checkbox"] {
-      accent-color: var(--yellow-accent);
-      width: 18px;
-      height: 18px;
-    }
-
-    .calc-price-box {
-      margin-top: 1.5rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .calc-price-box h4 {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .price-tag {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--yellow-accent);
-    }
+    /* GRIDS */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .card-num { font-size: 14px; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .card h3 { font-size: 20px; margin-bottom: 12px; }
 
     /* KONTAKTFORMULAR */
-    .contact-form {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 10px;
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: #0d1117;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: var(--yellow-accent);
-    }
-
-    .btn-submit {
-      background: var(--yellow-accent);
-      color: #000;
-      font-weight: 700;
-      border: none;
-      padding: 0.9rem 1.5rem;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
-
-    .btn-submit:hover {
-      background: var(--yellow-hover);
-    }
-
-    /* ÖFFNUNGSZEITEN SEKTION */
-    .hours-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .contact-form { max-width: 600px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 15px; }
+    .btn-submit { width: 100%; background: var(--text-main); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; }
 
     /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      border-top: 1px solid var(--border);
-      margin-top: 5rem;
-      background: #090c10;
-    }
-
-    .footer-insta {
-      color: var(--yellow-accent);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .footer-insta:hover {
-      text-decoration: underline;
-    }
-
-    .footer-rights {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 0.8rem;
-    }
+    footer { background: var(--text-main); color: #94a3b8; padding: 64px 0 32px 0; margin-top: 96px; }
+    .footer-content { display: flex; justify-content: space-between; align-items: center; }
+    .footer-brand h2 { color: #fff; margin-bottom: 8px; }
+    .footer-links a { color: #cbd5e1; text-decoration: none; margin-left: 24px; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / NAVIGATION -->
-  <nav>
-    <a href="#" class="logo">bourhan<span class="yellow">.dev</span></a>
-    <ul class="nav-links">
-      <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#werke">Meine Werke</a></li>
-      <li><a href="#rechner">Preisschätzer</a></li>
-      <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-  </nav>
+  <!-- MENÜ -->
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">Bourhan<span>.dev</span></a>
+        <ul class="nav-links">
+          <li><a href="#basis">Die Basis</a></li>
+          <li><a href="#proportionen">6 Proportionen</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#kontakt" class="btn-nav">Erstgespräch</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-  <!-- WAS ICH BIETE -->
-  <section id="leistungen">
-    <h2 class="section-title">Was ich <span class="yellow">biete</span></h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Webdesign & Development</h3>
-        <p>Individuelle, schnelle und saubere Programmierung – maßgeschneidert für dein Business.</p>
-      </div>
-      <div class="service-card">
-        <h3>Responsive Design</h3>
-        <p>Optimiert für Smartphones, Tablets und Desktops für ein perfektes Erlebnis auf allen Geräten.</p>
-      </div>
-      <div class="service-card">
-        <h3>SEO & Google Search</h3>
-        <p>Suchmaschinenoptimierte Erstellung, damit Kunden deine Website organisch über Google finden.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="section-badge">Das 7-Säulen-System</div>
+      <h1 class="hero-title">Das perfekte Gleichgewicht für deinen <span>digitalen Erfolg</span>.</h1>
+      <p class="hero-description">Aufgebaut auf einer starken Basis und strukturiert in 6 präzisen Proportionen. Beratung und Umsetzung aus einer Hand.</p>
+      <div class="hero-buttons">
+        <a href="#kontakt" class="btn-primary">Erstgespräch vereinbaren</a>
+        <a href="#proportionen" class="btn-secondary">Proportionen entdecken</a>
       </div>
     </div>
   </section>
 
-  <!-- MEINE WERKE (PROJEKTE FROM SUPABASE) -->
-  <section id="werke">
-    <h2 class="section-title">Meine <span class="yellow">Werke</span></h2>
-    <div id="Projekt-Container" class="projects-grid">
-      <p style="color: var(--text-muted);">Lade Projekte...</p>
-    </div>
-  </section>
-
-  <!-- PREISSCHÄTZER (6 OPTIONEN) -->
-  <section id="rechner">
-    <h2 class="section-title">Preis<span class="yellow">schätzer</span></h2>
-    <div class="calc-card">
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="350" class="calc-check" checked disabled>
-          <span>One-Page Website (Basis)</span>
-        </label>
-        <strong>350 €</strong>
-      </div>
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
-          <span>Tisch-Reservierung (Café / Gastro)</span>
-        </label>
-        <span>+150 €</span>
-      </div>
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="200" class="calc-check" onchange="calculatePrice()">
-          <span>Supabase Datenbank Anbindung</span>
-        </label>
-        <span>+200 €</span>
-      </div>
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="150" class="calc-check" onchange="calculatePrice()">
-          <span>SEO / Google Optimierung</span>
-        </label>
-        <span>+150 €</span>
-      </div>
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="550" class="calc-check" onchange="calculatePrice()">
-          <span>Shopify Online-Shop System</span>
-        </label>
-        <span>+550 €</span>
-      </div>
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="100" class="calc-check" onchange="calculatePrice()">
-          <span>Google Maps & Anfahrtskarte</span>
-        </label>
-        <span>+100 €</span>
-      </div>
-      <div class="calc-option">
-        <label>
-          <input type="checkbox" value="80" class="calc-check" onchange="calculatePrice()">
-          <span>Express-Lieferung (innerhalb 3 Tagen)</span>
-        </label>
-        <span>+80 €</span>
+  <!-- DIE BASIS -->
+  <section id="basis" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Das Fundament</span>
+        <h2 class="section-title">Die Basis</h2>
+        <p class="section-subtitle">Wo alles beginnt und worauf jede erfolgreiche Umsetzung aufbaut.</p>
       </div>
 
-      <div class="calc-price-box">
-        <h4>Richtpreis Schätzung:</h4>
-        <div class="price-tag" id="total-price">ca. 350 €</div>
+      <div class="basis-box">
+        <h3>Stabilität, Klarheit & Werte</h3>
+        <p>Ohne eine stabile Basis bringt die beste Struktur nichts. Die Basis ist das Fundament deiner Vision, deiner Werte und deiner Ausrichtung. Wir definieren Klarheit und Haltung, um ein Fundament zu schaffen, das allen Veränderungen standhält.</p>
       </div>
     </div>
   </section>
 
-  <!-- ÖFFNUNGSZEITEN -->
-  <section id="oeffnungszeiten">
-    <h2 class="section-title">Öffnungs<span class="yellow">zeiten</span></h2>
-    <div class="hours-card">
-      <div>
-        <strong>Montag - Sonntag:</strong> 14:00- 18:00 Uhr<br>
+  <!-- DIE 6 PROPORTIONEN -->
+  <section id="proportionen">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Die Bausteine</span>
+        <h2 class="section-title">Die 6 Proportionen</h2>
+        <p class="section-subtitle">Sechs aufeinander abgestimmte Schritte für das beste Ergebnis.</p>
       </div>
-      <span style="color: var(--yellow-accent); font-weight: 600;">Erreichbar</span>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-num">Proportion 1</div>
+          <h3>Status Quo & Analyse</h3>
+          <p>Tiefgehende Bestandsaufnahme deines Projekts zur Identifikation von Engpässen und ungenutzten Potenzialen.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">Proportion 2</div>
+          <h3>Strategie & Ausrichtung</h3>
+          <p>Entwicklung einer maßgeschneiderten Roadmap mit klaren Zieldefinitionen und Meilensteinen.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">Proportion 3</div>
+          <h3>Struktur & Prozess</h3>
+          <p>Aufbau von übersichtlichen Abläufen, Systemen und Arbeitsweisen für maximale Effizienz.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">Proportion 4</div>
+          <h3>Feinabstimmung & Qualität</h3>
+          <p>Detailarbeit, Feinjustierung aller Komponenten aufeinander und umfassende Qualitätsprüfung.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">Proportion 5</div>
+          <h3>Umsetzung & Skalierung</h3>
+          <p>Aktive Umsetzung, Veröffentlichung und gezielter Aufbau von Reichweite zur Vervielfachung der Ergebnisse.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">Proportion 6</div>
+          <h3>Integration & Nachhaltigkeit</h3>
+          <p>Langfristige Verankerung im Alltag, Begleitung und fortlaufende Optimierung für dauerhafte Stabilität.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section id="leistungen" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Angebote</span>
+        <h2 class="section-title">Meine Leistungen</h2>
+        <p class="section-subtitle">Wähle das Format, das am besten zu dir passt.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Erstberatung & Fundament-Check</h3>
+          <p>Analyse deiner aktuellen Situation bezogen auf die Basis und die 6 Proportionen. Du erhältst konkrete Handlungsempfehlungen.</p>
+        </div>
+
+        <div class="card">
+          <h3>2. Einzelmodule</h3>
+          <p>Zielgerichtete Arbeit an einer oder mehreren spezifischen Proportionen zur punktgenauen Lösung deines Problems.</p>
+        </div>
+
+        <div class="card">
+          <h3>3. Ganzheitliche Begleitung</h3>
+          <p>Der vollständige Prozess von Fundamentaufbau bis zur nachhaltigen Integration aller 6 Proportionen im Gesamtsystem.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- KONTAKT -->
   <section id="kontakt">
-    <h2 class="section-title">Kontaktieren Sie <span class="yellow">mich</span></h2>
-    <div class="contact-form">
-      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Kontakt</span>
+        <h2 class="section-title">Bereit, dein Fundament zu stärken?</h2>
+        <p class="section-subtitle">Sende eine Nachricht für ein unverbindliches Erstgespräch.</p>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Nachricht wurde gesendet.');">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Dein Name">
+          <label>Name</label>
+          <input type="text" placeholder="Dein Name" required>
         </div>
         <div class="form-group">
-          <label for="email">E-Mail-Adresse</label>
-          <input type="email" id="email" name="email" required placeholder="Deine E-Mail-Adresse">
+          <label>E-Mail-Adresse</label>
+          <input type="email" placeholder="deine@email.de" required>
         </div>
         <div class="form-group">
-          <label for="telefon">Telefonnummer</label>
-          <input type="tel" id="telefon" name="telefon" placeholder="Deine Telefonnummer">
+          <label>Gewünschtes Paket</label>
+          <select>
+            <option>Erstberatung & Fundament-Check</option>
+            <option>Einzelmodule (Spezifische Proportionen)</option>
+            <option>Ganzheitliche Begleitung (Basis + 6 Proportionen)</option>
+          </select>
         </div>
         <div class="form-group">
-          <label for="nachricht">Deine Nachricht</label>
-          <textarea id="nachricht" name="nachricht" rows="4" required placeholder="Deine Nachricht..."></textarea>
+          <label>Nachricht</label>
+          <textarea rows="4" placeholder="Beschreibe kurz dein Vorhaben..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Nachricht absenden</button>
+        <button type="submit" class="btn-submit">Anfrage absenden</button>
       </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <a href="https://instagram.com/bourhan.webdesign" target="_blank" class="footer-insta">bourhan.webdesign</a>
-    <p class="footer-rights">© 2026 Bourhan.dev - Alle Rechte vorbehalten.</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2>Bourhan.dev</h2>
+          <p>Die Basis & 6 Proportionen</p>
+        </div>
+        <div class="footer-links">
+          <a href="#basis">Die Basis</a>
+          <a href="#proportionen">Proportionen</a>
+          <a href="#leistungen">Leistungen</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+      <p style="text-align:center; font-size:14px; margin-top:32px;">&copy; 2026 Bourhan.dev – Alle Rechte vorbehalten.</p>
+    </div>
   </footer>
 
-<!-- SCRIPT LOGIK -->
-  <script>
-    // DEINE WERKE
-    const meineWerke = [
-      {
-        titel: 'Immobilien',
-        beschreibung: 'Exclusive Landingpage für Luxusimmobilien mit Filter und Live-Hypothekenrechner.',
-        link: 'https://bourii4.github.io/Immobilien-Website',
-        bild: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500'
-      },
-      {
-        titel: 'Pulse Fitness',
-        beschreibung: 'Dynamische Landingpage für ein Fitnessstudio mit Wochentags-Kursplan und Probetraining-Buchung.',
-        link: 'https://bourii4.github.io/fitness-website', 
-        bild: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500'
-      },
-      {
-        titel: 'Cafe Landingpage',
-        beschreibung: 'Landingpage für ein gemütliches Café am Rhein mit Tisch-Reservierung.',
-        link: 'https://bourii4.github.io/cafe-landigpage/',
-        bild: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500'
-      },
-      {
-        titel: 'kickzshop',
-        beschreibung: 'E-Commerce Online Shop im JD-Sports-Style mit dynamischer Produktdatenbank, Live-Filter & interaktivem Warenkorb.',
-        link: 'https://bourii4.github.io/kickz-shop',
-        bild: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500'
-      }
-    ];
-
-    function renderWerke() {
-      const container = document.getElementById("Projekt-Container");
-      if (!container) return;
-
-      container.innerHTML = "";
-      meineWerke.forEach(item => {
-        container.innerHTML += `
-          <div class="project-card">
-            <div class="project-img" style="background-image: url('${item.bild}')"></div>
-            <div class="project-info">
-              <h3>${item.titel}</h3>
-              <p>${item.beschreibung}</p>
-              <a href="${item.link}" target="_blank" style="display:inline-block; margin-top:10px; color:var(--yellow-accent, #ffc107); text-decoration:none; font-weight:600;">Website ansehen →</a>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    // Preisschätzer Logik
-    function calculatePrice() {
-      let total = 350;
-      const checkboxes = document.querySelectorAll('.calc-check');
-      checkboxes.forEach(box => {
-        if (box.checked && !box.disabled) {
-          total += parseInt(box.value) || 0;
-        }
-      });
-
-      const priceEl = document.getElementById('total-price');
-      if (priceEl) {
-        priceEl.innerText = 'ca. ' + total + ' €';
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-      renderWerke();
-    });
-  </script>
 </body>
 </html>
