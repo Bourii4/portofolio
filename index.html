@@ -133,67 +133,194 @@
     </div>
   </section>
 
-  <!-- MEINE ARBEIT (4 PROJEKTE MIT BILD, DETAIL, LINK) -->
-  <section id="arbeit" class="section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Meine Arbeit</h2>
-        <p class="section-subtitle">Ausgewählte Referenzen & individuelle Umsetzungen:</p>
-      </div>
+<!-- ABSCHNITT: MEINE ARBEIT -->
+<style>
+  .my-work-section {
+    padding: 60px 20px;
+    background-color: #f8fafc;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
 
-      <div class="projects-grid">
-        
-        <!-- PROJEKT 1 -->
-        <div class="project-card">
-          <div class="project-img-box">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Café Rheinblick">
-          </div>
-          <div class="project-body">
-            <h3>Café Rheinblick</h3>
-            <p>Moderner Webauftritt & Speisekarten-Integration für die Gastronomie.</p>
-            <a href="#" class="btn-project" onclick="alert('Link zu Café Rheinblick'); return false;">Projekt ansehen &rarr;</a>
-          </div>
-        </div>
+  .my-work-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
 
-        <!-- PROJEKT 2 -->
-        <div class="project-card">
-          <div class="project-img-box">
-            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Immobilien">
-          </div>
-          <div class="project-body">
-            <h3>Immobilien</h3>
-            <p>Übersichtliche Objektpräsentation mit direkter Anfrage-Funktion.</p>
-            <a href="#" class="btn-project" onclick="alert('Link zu Immobilien'); return false;">Projekt ansehen &rarr;</a>
-          </div>
-        </div>
+  .my-work-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
 
-        <!-- PROJEKT 3 -->
-        <div class="project-card">
-          <div class="project-img-box">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Pulse Fitness">
-          </div>
-          <div class="project-body">
-            <h3>Pulse Fitness</h3>
-            <p>Dynamischer Auftritt zur Neukundengewinnung & Kursübersicht.</p>
-            <a href="#" class="btn-project" onclick="alert('Link zu Pulse Fitness'); return false;">Projekt ansehen &rarr;</a>
-          </div>
-        </div>
+  .my-work-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f2a4a;
+    margin-bottom: 8px;
+  }
 
-        <!-- PROJEKT 4 -->
-        <div class="project-card">
-          <div class="project-img-box">
-            <img src="https://images.unsplash.com/photo-1556742049-0a67568d049f?auto=format&fit=crop&w=600&q=80" alt="Kickshop">
-          </div>
-          <div class="project-body">
-            <h3>Kickshop</h3>
-            <p>Strukturierte E-Commerce Plattform für Sport & Sneakers.</p>
-            <a href="#" class="btn-project" onclick="alert('Link zu Kickshop'); return false;">Projekt ansehen &rarr;</a>
-          </div>
-        </div>
+  .my-work-subtitle {
+    font-size: 16px;
+    color: #475569;
+  }
 
-      </div>
+  /* GRID FÜR DIE 4 PROJEKTE */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  /* EINZELNE PROJEKT-KARTE */
+  .work-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(15, 42, 74, 0.1);
+  }
+
+  /* BILD / BANNER BEREICH */
+  .work-image-box {
+    width: 100%;
+    height: 180px;
+    background-color: #0f2a4a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* INHALT DER KARTE */
+  .work-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  .work-project-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f2a4a;
+    margin-bottom: 8px;
+  }
+
+  .work-project-desc {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .work-link-btn {
+    display: inline-block;
+    text-align: center;
+    padding: 9px 16px;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #0f2a4a;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .work-link-btn:hover {
+    background-color: #0f2a4a;
+    color: #ffffff;
+    border-color: #0f2a4a;
+  }
+</style>
+
+<section class="my-work-section" id="meine-arbeit">
+  <div class="my-work-container">
+    
+    <div class="my-work-header">
+      <h2 class="my-work-title">Meine Arbeit</h2>
+      <p class="my-work-subtitle">Ausgewählte Projekte & Umsetzungen</p>
     </div>
-  </section>
+
+    <div class="work-grid">
+
+      <!-- PROJEKT 1 -->
+      <div class="work-card">
+        <div class="work-image-box">
+          <!-- https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500-->
+          <img src="DEIN-BILD-1.jpg" alt="Café Rheinblick">
+        </div>
+        <div class="work-content">
+          <div>
+            <h3 class="work-project-title">Café Rheinblick</h3>
+            <p class="work-project-desc">Landingpage für ein gemütliches Café am Rhein mit Tisch-Reservierung..</p>
+          </div>
+          <a href="https://bourii4.github.io/cafe-landigpage/-1.html" class="work-link-btn" target="_blank">Projekt ansehen &rarr;</a>
+        </div>
+      </div>
+
+      <!-- PROJEKT 2 -->
+      <div class="work-card">
+        <div class="work-image-box">
+          <!-- https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500 -->
+          <img src="DEIN-BILD-2.jpg" alt="Immobilien">
+        </div>
+        <div class="work-content">
+          <div>
+            <h3 class="work-project-title">Aura Immobilien</h3>
+            <p class="work-project-desc">Exklusive Landingpage für Luxusimmobilien mit Filter und Live-Hypothekenrechner..</p>
+          </div>
+          <a href="https://bourii4.github.io/Immobilien-Website-2.html" class="work-link-btn" target="_blank">Projekt ansehen &rarr;</a>
+        </div>
+      </div>
+
+      <!-- PROJEKT 3 -->
+      <div class="work-card">
+        <div class="work-image-box">
+          <!--https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500 #. -->
+          <img src="DEIN-BILD-3.jpg" alt="Pulse Fitness">
+        </div>
+        <div class="work-content">
+          <div>
+            <h3 class="work-project-title">Pulse Fitness</h3>
+            <p class="work-project-desc">Dynamische Landingpage für ein Fitnessstudio mit Wochentags-Kursplan und Probetraining-Buchung..</p>
+          </div>
+          <a href="https://bourii4.github.io/fitness-website-3.html" class="work-link-btn" target="_blank">Projekt ansehen &rarr;</a>
+        </div>
+      </div>
+
+      <!-- PROJEKT 4 -->
+      <div class="work-card">
+        <div class="work-image-box">
+          <!-- https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500-->
+          <img src="DEIN-BILD-4.jpg" alt="Kickshop">
+        </div>
+        <div class="work-content">
+          <div>
+            <h3 class="work-project-title">Kickshop</h3>
+            <p class="work-project-desc">E-Commerce Online Shop im JD-Sports-Style mit dynamischer Produktdatenbank, Live-Filter & interaktivem Warenkorb.</p>
+          </div>
+          <a href="https://bourii4.github.io/kickz-shop-4.html" class="work-link-btn" target="_blank">Projekt ansehen &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
   <!-- ERKLÄRUNG SÄULEN / PROPORTIONEN (EIGENER ABSCHNITT, NICHT STÖREND AUF HOMEPAGE) -->
   <section id="proportionen-info">
